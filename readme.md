@@ -55,7 +55,7 @@
 
 * we will install it on ubuntu 16.04 (so kinetic) we can makje a vm with ubuntu 18.04 to instal melodic
 
-### SLecture 6 - Which ROS version to use?
+### Lecture 6 - Which ROS version to use?
 
 * a new release every year
 * recommended is melodic
