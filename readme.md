@@ -71,9 +71,10 @@
 * we give max cpu cores (4)
 * in storage in IDE controller we select our iso file
 * ok and start
-* we install ubuntu => normal installation => in vm we erase dick and isntall
-* we install
+* we install ubuntu => normal installation => in vm we erase dick and install
 * we open a terminal and upgrade packages `sudo apt-get update` and `sudo apt-get upgrade`
+* we run `sudo apt-get install virtualbox-guest-dkms` to fix resolution and restart
+* we run `sudo apt-get install virtualbox-guest-additions-iso` to fix sound and restart
 * we download a text editor. we get sublime
 
 ### Lecture 8 - Install ROS
@@ -95,3 +96,17 @@ echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 ```
 * to install new packages to ros `sudo apt=get install ros-melodic-<packagename>`
+
+### Lecture 9 - Launch Your First ROS Master
+
+* to launch a new ros master we type in terminal `roscore`
+* we have a ros master running on our environment
+* ROS master is the centerpiece of the ROS application. it provides naming and registration services wo all ROS subprograms (nodes)
+* we always ahave to start the ROS master before we use any ROS functionality
+* I can have only 1 ROS master running at the same time
+
+## Section 3 - Run your First ROS Program
+
+### Lecture 11 - Intro
+
+* 
