@@ -199,4 +199,83 @@ if __name__ == '__main__':
 
 ### Lecture 16 - Our first C++ node
 
+* we will create teh same code in C++
+* C++ code is written in teh <package_folder>/src folder 'catkin_ws/src/my_robot_tutorials/src'
+* we name our sourcecode file 'my_first_node.cpp' and edit it
+* we include the ros cpp lib `#include <ros/ros.h>`
+* we create the main 
+```
+int main(int argc, char **argv) {
+}
+```
+* we init the node giving it a unique name `ros::init(argc,argv,"my_first_cpp_node");`
+* for c++ nodes we need a node handle to be able to start the node `ros::NodeHandle nh;`
+* we add a log entry `ROS_INFO("Node has been started");`
+* in ROS c++ lib there is no sleep method
+* we need to create a duration object and call the sleep method on it `ros::Duration(1.0).sleep();`
+* cpp files need to be compile before being executed.
+* we go up one folder (into package folder) and edit the CMakeList.txt
+* in the '## Declare a C++ executable' section we add `add_executable(node_cpp src/my_first_node.cpp)` passing in the name we want to give to the executable and the source file to use
+* executable name is not bound to node name restrictions
+* we also need to specify the libraries to link `target_link_libraries(node_cpp ${catkin_LIBRARIES})`
+* we save the file and go up to catkin workspace folder and run `catkin_make` to build the node into an executable
+* our executable is located into <catkin workspace>/devel/lib/<package name>/ `catkin_ws/devel/lib/my_robot_tutorials/node_cpp` as node_cpp (the name we speced)
+* with roscore running we run `./node_cpp` and run our node
+* we will now impleemnta a 10Hz loop to printout a log like in python
+```
+	ros::Rate rate(10);
+
+	while(ros::ok()){
+		ROS_INFO("Hello");
+		rate.sleep();
+	}
+```
+* we build and run it. it OK
+* we run both node (cpp and python) and list them with `rosnode list`.
+
+### Lecture 17 - Debug our Nodes with Command Line Tools
+
+* starting our nodes individually is not practical.
+* we can run from anywhere `rosrun <package name> <node_executable or script>` 
+* make sure to `source ~/<path>/cat_ws/devel/setup.bash` or add it to the .bashrc
+* to see the nodes in the package we run `rosrun <packagename>` and hit TAB 2x times
+* once our node is running we can run `rosnode list` to see it in the list (it node name)
+* we can grab the /<node name> and run `rosnode info /<node name>` to see info about the node. of course if we know the node name we dont need list.
+* what we get is
+```
+Node [/my_first_python_node]
+Publications: 
+ * /rosout [rosgraph_msgs/Log]
+
+Subscriptions: None
+
+Services: 
+ * /my_first_python_node/get_loggers
+ * /my_first_python_node/set_logger_level
+
+
+contacting node http://ros-vm:32813/ ...
+Pid: 4564
+Connections:
+ * topic: /rosout
+    * to: /rosout
+    * direction: outbound
+    * transport: TCPROS
+
+```
+* we see the node published to /rosout node using the Log functionality
+* we see the services of the node
+* and the connections of the node
+* instead od ctrl+c from terminal we can kill a node from anywher with `rosnode kill /<node name>`
+* we can ping a running node with `rosnode ping /<node name>`
+```
+rosnode: node is [/my_first_python_node]
+pinging /my_first_python_node with a timeout of 3.0s
+xmlrpc reply from http://ros-vm:45621/	time=1.051903ms
+xmlrpc reply from http://ros-vm:45621/	time=1.616955ms
+...
+```
+
+### Lecture 18 - Visualize the ROS Graph with rqt_graph
+
 * 

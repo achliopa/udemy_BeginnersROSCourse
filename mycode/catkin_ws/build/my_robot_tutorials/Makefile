@@ -91,6 +91,17 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -123,17 +134,6 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -303,6 +303,21 @@ std_msgs_generate_messages_cpp/fast:
 .PHONY : std_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
+my_robot_tutorials/CMakeFiles/node_cpp.dir/rule:
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_robot_tutorials/CMakeFiles/node_cpp.dir/rule
+.PHONY : my_robot_tutorials/CMakeFiles/node_cpp.dir/rule
+
+# Convenience name for target.
+node_cpp: my_robot_tutorials/CMakeFiles/node_cpp.dir/rule
+
+.PHONY : node_cpp
+
+# fast build rule for target.
+node_cpp/fast:
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/node_cpp.dir/build.make my_robot_tutorials/CMakeFiles/node_cpp.dir/build
+.PHONY : node_cpp/fast
+
+# Convenience name for target.
 my_robot_tutorials/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_robot_tutorials/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 .PHONY : my_robot_tutorials/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
@@ -392,6 +407,33 @@ std_msgs_generate_messages_py/fast:
 	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/std_msgs_generate_messages_py.dir/build.make my_robot_tutorials/CMakeFiles/std_msgs_generate_messages_py.dir/build
 .PHONY : std_msgs_generate_messages_py/fast
 
+src/my_first_node.o: src/my_first_node.cpp.o
+
+.PHONY : src/my_first_node.o
+
+# target to build an object file
+src/my_first_node.cpp.o:
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/node_cpp.dir/build.make my_robot_tutorials/CMakeFiles/node_cpp.dir/src/my_first_node.cpp.o
+.PHONY : src/my_first_node.cpp.o
+
+src/my_first_node.i: src/my_first_node.cpp.i
+
+.PHONY : src/my_first_node.i
+
+# target to preprocess a source file
+src/my_first_node.cpp.i:
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/node_cpp.dir/build.make my_robot_tutorials/CMakeFiles/node_cpp.dir/src/my_first_node.cpp.i
+.PHONY : src/my_first_node.cpp.i
+
+src/my_first_node.s: src/my_first_node.cpp.s
+
+.PHONY : src/my_first_node.s
+
+# target to generate assembly for a file
+src/my_first_node.cpp.s:
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/node_cpp.dir/build.make my_robot_tutorials/CMakeFiles/node_cpp.dir/src/my_first_node.cpp.s
+.PHONY : src/my_first_node.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -401,6 +443,7 @@ help:
 	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... rebuild_cache"
+	@echo "... test"
 	@echo "... list_install_components"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... roscpp_generate_messages_eus"
@@ -413,13 +456,16 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_cpp"
+	@echo "... node_cpp"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_py"
-	@echo "... test"
+	@echo "... src/my_first_node.o"
+	@echo "... src/my_first_node.i"
+	@echo "... src/my_first_node.s"
 .PHONY : help
 
 
