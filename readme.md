@@ -278,4 +278,94 @@ xmlrpc reply from http://ros-vm:45621/	time=1.616955ms
 
 ### Lecture 18 - Visualize the ROS Graph with rqt_graph
 
+* we can use a graphical tools to show the current ROS graph
+* we run the built in rqt_graph node in the rqt_graph package `rosrun rqt_graph rqt_graph`
+* we get a qt window.
+* if we unselect debug  we see the graph but it has only the qt node (elipse) publishing to rosout topic (rectangle) and ultimately talking to rosout node (elipse) 
+* if we now list the nodes we will wee a new node /rqt_gui_py_node_XXXX
+* if we run one of our nodes and hit refresh on the graph tool we will see the ode in isolation (if we have debug selected) if we unselect debug we will see also our node publishing to the rosout topic
+
+### Lecture 19 - Experimenting on Nodes with Turtlesim
+
+* apart from writing our one nodes and packages we can resue a lot of existing ones.
+* a way to understand better nodes is to run and see the code of existing ones.
+* turtlesim package is a package made for learning ROS
+* we install it with `sudo apt-get install ros-melodic-turtlesim`
+* we restart the ros master
+* we run `rosrun turtlesim` + 2x TAB to see the nodes available
+* we have:
+	* draw_square
+	* mimic
+	* turtlesim_node
+	* turtle_teleop_key
+* we run `rosrun turtlesim turtlesim_node` and get a window with a turtle
+* we have a turtlesim node with a GUI window
+* we start another node from the same package `rosrun turtlesim turtle_teleop_key` where we can control the turtle from the keys of keyboard
+* we launch the graph and see how the nodes are connected
+
+## Section 4 - Communicate with ROS Topics
+
+### Lecture 22 - What is a Topic?
+
+* A Topic is broadcasted by a Publisher Node. muchlike a radio station broacasting in a certain freq.
+* Any Node that wants to consume data of this Topic must subscribe to this topic (Subscriber Node)
+* Both Subscriber and Publisher must send data with the same structure
+* A Topic can have many publishers and many subscribers
+* A subscriber or publisher is agnostic of other nodes publishing or subscribing to the topic
+* a node can publish, subsribe or publish and subscribe to many different topics
+* ROS Topic:
+	* A topic is a named bus over which nodes exchange messages 
+
+* topic name MUST NOT start with . or number
+* Messages are sent over TCPIP
+* ROS libs we use for Topics give enogh abstraction from the inner details
+* We use the Topic when we want to establish a unidirectional data stream between the publisher and teh subscriber
+* Participating nodes are Anonymous
+* A Topic has a message type
+* Both C++ and python libs support Topic functionality
+* ROS master hhelps nodes find needed topics (like a DNS host)
+* A node can have many publishers/subscribers for many different topics
+
+### Lecture 23 - Create a Python Publisher
+
+* we go in our package in scripts folder 'catkin_ws/src/my_robot_tutorials/scripts'
+* we ll create anew node py script `touch robot_news_radio_transmitter.py` and make it executable
+* we add the boilerplate code and init/name the node
+```
+#!/usr/bin/env python
+
+import rospy
+
+if __name__ == '__main__':
+	respy.init_node('robot_news_radio_transmitter')
+```
+* to publish sthing on a topic we create a publisher object passing in the name of the topic, the message type and the buffer size `pub = rospy.Publisher('/robot_news_radio', String, queue_size=10)`
+* we use a built in msg type of the lib std_msgs we added as dependecy when we created  our package. we import this type in  our script `from std_msgs.msg import String`
+* buffer size gives time to subscribers to consume the data when there are many messages pblished
+* with publsher ready we can publish data
+* we use the rate + while loop patternt to create a periodic loop ofr publishing an in it we create a String message and publish it
+```
+	rate = rospy.Rate(2)
+
+	while not rospy.is_shutdown():
+		msg = String()
+		msg.data = 'Hi,this is Sakis from Robot News Radio!'
+		pub.publish(msg)
+		rate.sleep()
+```
+* we run with rosrun . with rosnode info we can see the topic in publications
+* with the node running and publishing the topic we run `rostopic list` and see the active topics in the ROS. we see our/robot_news_radio listed
+* with `rostopic info /robot_news_radio` we see
+```
+Type: std_msgs/String
+
+Publishers: 
+ * /robot_news_radio_transmitter (http://ros-vm:46083/)
+
+Subscribers: None
+```
+* we can listen to the topic from the terminal with `rostopic echo /robot_news_radio`
+
+### Lecture 24 - Create a Python Subscriber
+
 * 
