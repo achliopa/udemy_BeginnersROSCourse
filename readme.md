@@ -368,4 +368,33 @@ Subscribers: None
 
 ### Lecture 24 - Create a Python Subscriber
 
-* 
+* in our package scripts we add a new file smartphone.py to write our topic suscriber node and make it executable
+* we add boilerplate python node code and name it
+```
+#!/usr/bin/env python
+import rospy
+
+if __name__ == '__main__':
+	rospy.init_node('smartphone')
+```
+* we create a subscriber object  `sub = rospy.Subscriber('/robot_news_radio',String, callback_receive_radio_data)` with Subsriber class passing the toipic name , the msg type and a callback method to call when new data arrive
+* we also import String from std_msgs.msg
+* we create the callback which gets as input the msg
+```
+def callback_receive_radio_data(msg):
+	rospy.loginfo("Message received: ")
+	rospy.loginfo(msg)
+```
+* we add `rospy.spin()` to keep our node alive and listening as we dont have a rate and whileloop
+* we rosrun both and visualise them aslo we get rostopic info
+```
+Type: std_msgs/String
+
+Publishers: 
+ * /robot_news_radio_transmitter (http://ros-vm:37101/)
+
+Subscribers: 
+ * /smartphone (http://ros-vm:45647/)
+
+
+```
