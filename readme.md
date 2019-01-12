@@ -159,3 +159,44 @@ source ~/.bashrc
 	* Fault tolerance (1 can crash, the others will run)
 	* Can be written in C++, Python, ...
 * Nodes must have unique names
+
+### Lecture 15 - Our first Python Node
+
+* we go to our package folder in our workspace 'catkin_ws/src/my_robot_tutorials'
+* we create a scripts folder `mkdir scripts` and cd into it
+* we add a python script file and make it executable
+```
+touch my_first_node.py
+chmod +x my_first_node.py
+```
+* we start to code it
+* we set the env to python `#!/usr/bin/env python`
+* we import rospy `import rospy` that we added as a dependency in the package
+* first of all we have to initialize the node giving it a (unique) name
+```
+if __name__ == '__main__':
+	rospy.init_node('my_first_python_node')
+```
+* after we initialize we create some log trace for ros `rospy.loginfo("This node has been initialized")`
+* we send rospy to sleep for 1 second `rospy.sleep(1)`
+* then add one more log entry `rospy.loginfo("Exit now")`
+* we save the file and run it as a python script `python my_first_node.py ` but get an error 'Unable to register with master node [http://localhost:11311]: master may not be running yet. Will keep trying.'
+* this is becase we always need to run the master with `roscore` before running anything related to ros
+* we start it and we see our node executing (see the logs in term)
+* we will add more functionality in our node
+* we use `rate = rospy.Rate(10)` to set a rate (a timer) with a freq of 10Hz
+* we also use a while loop with condition rospy.is_shutdown() which is False as long as our node is running `while not rospy.is_shutdown():`
+* we shutdown the node with ctrl+C or programmaticaly
+* we log and then use rate.sleep() to sleep from 1/10 of sec.
+```
+	while not rospy.is_shutdown():
+		rospy.loginfo('Hello')
+		rate.sleep()
+```
+* what effectively we implemented was a 10Hz  loop cycle to run our code
+* to see our currenlty running nodes we use `rosnode list` in our example we see our node and 'rosout' which is always running (logging and other functionality)
+* if i attmpe to run the script/node 2 times one is shutdown (nodes must be unique named)
+
+### Lecture 16 - Our first C++ node
+
+* 
