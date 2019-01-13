@@ -505,4 +505,7 @@ angular:
 
 ### Lecture 30 - Topic Activity
 
-* 
+* we have to implement
+	* a publisher node (number_publisher) that publishes in /number topic (std_msgs/Int64)
+	* a subscriber/publisher node (number_counter) that listens to /number topic and publishes to /number_counter topic (std_msgs/Int64) a coutner of the messages he received so far
+* to reuse the publisher from callback we make it global
