@@ -139,8 +139,8 @@ add_executable(node_cpp src/my_first_node.cpp)
 target_link_libraries(node_cpp ${catkin_LIBRARIES})
 add_executable(robot_news_radio_transmitter src/robot_news_radio_transmitter.cpp)
 target_link_libraries(robot_news_radio_transmitter ${catkin_LIBRARIES})
-add_executable(smartphone src/smartphone.cpp)
-target_link_libraries(smartphone ${catkin_LIBRARIES})
+add_executable(smartphone_node src/smartphone.cpp)
+target_link_libraries(smartphone_node ${catkin_LIBRARIES})
 
 
 ## Rename C++ executable without prefix

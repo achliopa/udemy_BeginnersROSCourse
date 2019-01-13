@@ -168,6 +168,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+my_robot_tutorials/CMakeFiles/smartphone_node.dir/rule:
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_robot_tutorials/CMakeFiles/smartphone_node.dir/rule
+.PHONY : my_robot_tutorials/CMakeFiles/smartphone_node.dir/rule
+
+# Convenience name for target.
+smartphone_node: my_robot_tutorials/CMakeFiles/smartphone_node.dir/rule
+
+.PHONY : smartphone_node
+
+# fast build rule for target.
+smartphone_node/fast:
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/smartphone_node.dir/build.make my_robot_tutorials/CMakeFiles/smartphone_node.dir/build
+.PHONY : smartphone_node/fast
+
+# Convenience name for target.
 my_robot_tutorials/CMakeFiles/robot_news_radio_transmitter.dir/rule:
 	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_robot_tutorials/CMakeFiles/robot_news_radio_transmitter.dir/rule
 .PHONY : my_robot_tutorials/CMakeFiles/robot_news_radio_transmitter.dir/rule
@@ -211,21 +226,6 @@ roscpp_generate_messages_eus: my_robot_tutorials/CMakeFiles/roscpp_generate_mess
 roscpp_generate_messages_eus/fast:
 	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/roscpp_generate_messages_eus.dir/build.make my_robot_tutorials/CMakeFiles/roscpp_generate_messages_eus.dir/build
 .PHONY : roscpp_generate_messages_eus/fast
-
-# Convenience name for target.
-my_robot_tutorials/CMakeFiles/smartphone.dir/rule:
-	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_robot_tutorials/CMakeFiles/smartphone.dir/rule
-.PHONY : my_robot_tutorials/CMakeFiles/smartphone.dir/rule
-
-# Convenience name for target.
-smartphone: my_robot_tutorials/CMakeFiles/smartphone.dir/rule
-
-.PHONY : smartphone
-
-# fast build rule for target.
-smartphone/fast:
-	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/smartphone.dir/build.make my_robot_tutorials/CMakeFiles/smartphone.dir/build
-.PHONY : smartphone/fast
 
 # Convenience name for target.
 my_robot_tutorials/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
@@ -497,7 +497,7 @@ src/smartphone.o: src/smartphone.cpp.o
 
 # target to build an object file
 src/smartphone.cpp.o:
-	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/smartphone.dir/build.make my_robot_tutorials/CMakeFiles/smartphone.dir/src/smartphone.cpp.o
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/smartphone_node.dir/build.make my_robot_tutorials/CMakeFiles/smartphone_node.dir/src/smartphone.cpp.o
 .PHONY : src/smartphone.cpp.o
 
 src/smartphone.i: src/smartphone.cpp.i
@@ -506,7 +506,7 @@ src/smartphone.i: src/smartphone.cpp.i
 
 # target to preprocess a source file
 src/smartphone.cpp.i:
-	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/smartphone.dir/build.make my_robot_tutorials/CMakeFiles/smartphone.dir/src/smartphone.cpp.i
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/smartphone_node.dir/build.make my_robot_tutorials/CMakeFiles/smartphone_node.dir/src/smartphone.cpp.i
 .PHONY : src/smartphone.cpp.i
 
 src/smartphone.s: src/smartphone.cpp.s
@@ -515,7 +515,7 @@ src/smartphone.s: src/smartphone.cpp.s
 
 # target to generate assembly for a file
 src/smartphone.cpp.s:
-	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/smartphone.dir/build.make my_robot_tutorials/CMakeFiles/smartphone.dir/src/smartphone.cpp.s
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/smartphone_node.dir/build.make my_robot_tutorials/CMakeFiles/smartphone_node.dir/src/smartphone.cpp.s
 .PHONY : src/smartphone.cpp.s
 
 # Help Target
@@ -528,12 +528,12 @@ help:
 	@echo "... install/local"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... smartphone_node"
 	@echo "... robot_news_radio_transmitter"
 	@echo "... list_install_components"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... roscpp_generate_messages_eus"
 	@echo "... edit_cache"
-	@echo "... smartphone"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_lisp"

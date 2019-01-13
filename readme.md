@@ -454,4 +454,14 @@ void callback_receive_radio_data(const std_msgs::String& msg){
 
 ### Lecture 26 - Use Anonymous Nodes to Launch Multiple Publishers/Subscribers
 
+* we have now 2 publishers and 2 subscribers on teh same topic. we can not run them all together due tp naming rules
+* we can solve this by naming nodes uniquely. also we can say in the init node that the node is anonymous e.g `rospy.init_node('robot_news_radio_transmitter', anonymous=True)`
+* in that case when the node runs a random string is appended to its name
+* i can ever rosrun the same build and each running instance node will be uniquely named
+* for C++ making node anonymous is done with `ros::init(argc, argv, "robot_news_radio_transmitter", ros::init_options::AnonymousName);`
+* in this way if we have multiple sensors (same) we can run the same node implementation multiple times
+* of course we can make also subscribers anonymous
+
+### Lecture 27 - Debug Topics with Command Line Tools
+
 * 

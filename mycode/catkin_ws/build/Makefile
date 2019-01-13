@@ -285,6 +285,19 @@ gtest/fast:
 .PHONY : gtest/fast
 
 #=============================================================================
+# Target rules for targets named smartphone_node
+
+# Build rule for target.
+smartphone_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 smartphone_node
+.PHONY : smartphone_node
+
+# fast build rule for target.
+smartphone_node/fast:
+	$(MAKE) -f my_robot_tutorials/CMakeFiles/smartphone_node.dir/build.make my_robot_tutorials/CMakeFiles/smartphone_node.dir/build
+.PHONY : smartphone_node/fast
+
+#=============================================================================
 # Target rules for targets named robot_news_radio_transmitter
 
 # Build rule for target.
@@ -322,19 +335,6 @@ roscpp_generate_messages_eus: cmake_check_build_system
 roscpp_generate_messages_eus/fast:
 	$(MAKE) -f my_robot_tutorials/CMakeFiles/roscpp_generate_messages_eus.dir/build.make my_robot_tutorials/CMakeFiles/roscpp_generate_messages_eus.dir/build
 .PHONY : roscpp_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named smartphone
-
-# Build rule for target.
-smartphone: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 smartphone
-.PHONY : smartphone
-
-# fast build rule for target.
-smartphone/fast:
-	$(MAKE) -f my_robot_tutorials/CMakeFiles/smartphone.dir/build.make my_robot_tutorials/CMakeFiles/smartphone.dir/build
-.PHONY : smartphone/fast
 
 #=============================================================================
 # Target rules for targets named roscpp_generate_messages_lisp
@@ -540,10 +540,10 @@ help:
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
+	@echo "... smartphone_node"
 	@echo "... robot_news_radio_transmitter"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... roscpp_generate_messages_eus"
-	@echo "... smartphone"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_lisp"
