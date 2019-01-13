@@ -585,4 +585,45 @@ Args: a b
 
 ### Lecture 37 - Create a C++ Service Server & Client
 
-* 
+* we add two src files 'add_two_ints_server.cpp' and 'add_two_ints_client.cpp' in src folder of package and add their entries in CMakeLists.txt in package folder.
+* we start with server. we add boilerplate c++ node code
+* we create teh serviceserver `ros::ServiceServer server = nh.advertiseService("/add_two_ints", handle_add_two_ints);` passing in the name and the callback
+* we spin to keep alive
+* we impleemnt the callback
+```
+bool handle_add_two_ints(rospy_tutorials::AddTwoInts::Request &req,
+						rospy_tutorials::AddTwoInts::Response &res){
+
+	int result = req.a + req.b;
+	ROS_INFO("%d + %d = %d", (int)req.a, (int)req.b, (int)result);
+	res.sum = result;
+	return true;
+}
+```
+* in C++ the callback return a bool whetehr it was successfult or not
+* req and res are passed in as references from which we get/set the data
+* we ads rospy_tutorials in our package dependencies in CMAKELists
+* we add it also in package.xml as buils,buildexport and exec dependency
+* we build and run and test with the python client. success!!!
+* we implement client
+* we add boilerplate node code
+* we create the serviceclient `ros::ServiceClient client = nh.serviceClient<rospy_tutorials::AddTwoInts>("/add_two_ints");
+}` and include AddTwoInts.h
+* we create the service message and fill in ther equest
+```
+	rospy_tutorials::AddTwoInts srv;
+	srv.request.a =12;
+	srv.request.b = 23;
+```
+* we call the service with `client.call(srv);`
+* NOTE that so far we have no e rror  handling neither wait
+* we add some error shandling logic to lmake sure that we print when we have a repsonse
+```
+	if (client.call(srv)){
+		// process data
+		ROS_INFO("Returned sum is %d",(int)srv.response.sum);
+	} else {
+		ROS_WARN("Service call failed");
+	}
+```
+* we build and test. success
