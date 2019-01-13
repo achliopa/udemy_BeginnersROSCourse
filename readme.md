@@ -540,4 +540,49 @@ angular:
 
 ### Lecture 35 - Create a Python Service Server
 
+* we will create a service server that takes 2 numbers in the request and returns their sum as response (computational task)
+* in ourr package scripts we create add_two_ints_server.py and make it executable
+* we add boilerplate code
+* to create a service we use `service = rospy.Service( '/add_two_ints', AddTwoInts, handle_add_two_ints)` where we pass in the name of the service (start witha verb by conv), the request and response message type and the callback the server will run when he gets a request
+* the message type is a builtin type from rospy_tutorials
+* when server gets a req from a client he checks that the type is valid and then runs the callback where he will send the repsonse back
+* we implement the callback where req is passed as arg and we return the response speceke in teh req/res mssg type
+```
+def handle_add_two_ints(req):
+	result = req.a + req.b
+	rospy.loginfo("Sum of "+str(req.a)+" and "+str(req.b)+" is "+str(result))
+	return result
+```
+* we log and spinto keep the node (server) alive
+* we run it with rosrun
+* to test it we use 'rosservice' group of commands
+* with `rosservice list` we see our new service and with `rosservice info <servicename>` we see info about it
+```
+Node: /ad_two_int_server
+URI: rosrpc://ros-vm:36797
+Type: rospy_tutorials/AddTwoInts
+Args: a b
+```
+* we call the service from command line `rosservice call /add_two_ints 1 2` passing the 2 arguments and get back the sum
+
+### Lecture 36 - Create a Python Service Client
+
+* agin in scripts folder we create a ;py file 'add_two_ints_client.py' and make it executable and edit its
+* we add node boilerplate code
+* before we start sending requests to teh service we add a wait `rospy.wait_for_service("/add_two_ints")`
+* this is a blocking code and waits till the service is avaialble
+* we put our client code in a try,except block as if server is not ready we will get an exception.
+```
+	try:
+		add_two_ints = rospy.ServiceProxy("/add_two_ints", AddTwoInts)
+		response = add_two_ints(2,6)
+		rospy.loginfo("Response is: "+ str(response.sum))
+	except rospy.ServiceException as e:
+		rospy.logwarn("Service failed: " + str(e))
+```
+* in the try block we create the client and send teh request printing the response
+* we run cliient and waits for server ., we run the server and we see the comm happening
+
+### Lecture 37 - Create a C++ Service Server & Client
+
 * 
