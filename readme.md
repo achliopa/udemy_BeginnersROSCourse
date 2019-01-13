@@ -509,3 +509,35 @@ angular:
 	* a publisher node (number_publisher) that publishes in /number topic (std_msgs/Int64)
 	* a subscriber/publisher node (number_counter) that listens to /number topic and publishes to /number_counter topic (std_msgs/Int64) a coutner of the messages he received so far
 * to reuse the publisher from callback we make it global
+
+## Section 5 - Communicate with ROS Services
+
+### Lecture 33 - Intro
+
+* Topics are not suitable for all kinds of communication
+* if we want to toggle LEDS on the robot we needa client server architecture
+
+### Lecture 34 - What is a Service?
+
+* say we have a LED panel on our robot controlled by a LED panel node.
+* we want this node to be accessible from other nodes that want to change the status of the leds.
+* we create  ROS service names Set Led
+* in the LED panel node we create a service server for the Set LED service.
+* LED panel node advertises the Set Led service
+* In the robot we have another node dealing with the Battery status (Battery Node)
+* The battery Node will contain a Service CLient for the Set Led service
+* when battery goes LOW. Battery node will send a request to Set LED service with data (Led Num: 3, state: ON)
+* THe service server expects certain data. if data in request are like expected he process the info. once we processes the request he sends back a response (also predefined) e.g Success: True
+* server is now ready to accept new requests
+* ROS - Services:
+	* A ROS Service is a client/server system
+	* It is synchronous
+	* we should use it only for computations and fast actions
+	* service call is blocking so our node will be waiting for reply
+	* A service is defined by its name and by 2 message types (request and response)
+	* It can be written in Python or C++ in the nodes
+	* Only 1 server, many clients
+
+### Lecture 35 - Create a Python Service Server
+
+* 
