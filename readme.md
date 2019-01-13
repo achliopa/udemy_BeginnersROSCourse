@@ -627,3 +627,24 @@ bool handle_add_two_ints(rospy_tutorials::AddTwoInts::Request &req,
 	}
 ```
 * we build and test. success
+
+### Lecture 38 - Debug Services with Command Line Tools
+
+* we have seen rosservice info, list, call
+* all rosservice commands are
+```
+	rosservice args	print service arguments
+	rosservice call	call the service with the provided args
+	rosservice find	find services by service type
+	rosservice info	print information about service
+	rosservice list	list active services
+	rosservice type	print service type
+	rosservice uri	print service ROSRPC uri
+``` 
+
+### Lecture 39 - Experiment on Services with Turtlesim
+
+* we launch turtlesim_node and turtle_teleop_key form turtlesim
+* with both nodes running we see `rosservice list`
+* we `rosservice info /reset` is of type std_srvs/Empty that means no arguments. we call it to reset the turtle
+* we check turtle1/teleport_relative service. its type is 'turtlesim/TeleportRelative' it takes lienar and angular setpoints as float. we call it.
