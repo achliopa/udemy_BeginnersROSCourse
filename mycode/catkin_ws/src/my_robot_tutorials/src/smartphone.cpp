@@ -2,7 +2,7 @@
 #include <std_msgs/String.h>
 
 void callback_receive_radio_data(const std_msgs::String& msg){
-	ROS_INFO("Message receiveL : %s", msg.data.c_str());
+	ROS_INFO("Message received : %s", msg.data.c_str());
 }
 
 int main(int argc, char **argv) {

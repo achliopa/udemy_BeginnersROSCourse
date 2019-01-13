@@ -464,4 +464,45 @@ void callback_receive_radio_data(const std_msgs::String& msg){
 
 ### Lecture 27 - Debug Topics with Command Line Tools
 
+* like nodes topics have their command line tools. we ve seen o far 
+	* rostopic info <node name>
+	* rostopic list 
+	* rostopic echo <node name>
+* we can so more with `rostopic -h`
+```
+	rostopic bw	display bandwidth used by topic
+	rostopic delay	display delay of topic from timestamp in header
+	rostopic echo	print messages to screen
+	rostopic find	find topics by type
+	rostopic hz	display publishing rate of topic    
+	rostopic info	print information about active topic
+	rostopic list	list active topics
+	rostopic pub	publish data to topic
+	rostopic type	print topic or field type
+```
+* the syntax to publish with rostopic pub is `rostopic pub -1 /robot_news_radio std_msgs/String "data: 'Hello from Pub'"` this will publish one time only. to publish multiple times we use  -r 5 `rostopic pub -r 5 ...` 5 is the rate in Hz
+
+### Lecture 28 - Visualize Topics tith rgt_graph
+
+* as we ve seen we can use rqt_graph to see a graph respresentation of our system
+
+### Lecture 29 - Experiment on Topics with Turtlesim
+
+* i run `rosrun turtlesim turtlesim_node` and rosrun turtlesim turtle_teleop_key
+* i can command the turtle with keys
+* i use rgt_graph to see the topic they use to comm . its /turtle1/cmd_vel so i `rostopic echo /turtle1/cmd_vel` and snif the dat sent in this topic
+* we can manualy publish something in this topic from terminal 
+```
+  rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist "linear: 
+  x: 2.0
+  y: 0.0
+  z: 0.0
+angular: 
+  x: 0.0
+  y: 0.0
+  z: 0.0"
+```
+
+### Lecture 30 - Topic Activity
+
 * 
