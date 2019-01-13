@@ -168,6 +168,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+my_robot_tutorials/CMakeFiles/robot_news_radio_transmitter.dir/rule:
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_robot_tutorials/CMakeFiles/robot_news_radio_transmitter.dir/rule
+.PHONY : my_robot_tutorials/CMakeFiles/robot_news_radio_transmitter.dir/rule
+
+# Convenience name for target.
+robot_news_radio_transmitter: my_robot_tutorials/CMakeFiles/robot_news_radio_transmitter.dir/rule
+
+.PHONY : robot_news_radio_transmitter
+
+# fast build rule for target.
+robot_news_radio_transmitter/fast:
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/robot_news_radio_transmitter.dir/build.make my_robot_tutorials/CMakeFiles/robot_news_radio_transmitter.dir/build
+.PHONY : robot_news_radio_transmitter/fast
+
+# Convenience name for target.
 my_robot_tutorials/CMakeFiles/roscpp_generate_messages_py.dir/rule:
 	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_robot_tutorials/CMakeFiles/roscpp_generate_messages_py.dir/rule
 .PHONY : my_robot_tutorials/CMakeFiles/roscpp_generate_messages_py.dir/rule
@@ -196,6 +211,21 @@ roscpp_generate_messages_eus: my_robot_tutorials/CMakeFiles/roscpp_generate_mess
 roscpp_generate_messages_eus/fast:
 	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/roscpp_generate_messages_eus.dir/build.make my_robot_tutorials/CMakeFiles/roscpp_generate_messages_eus.dir/build
 .PHONY : roscpp_generate_messages_eus/fast
+
+# Convenience name for target.
+my_robot_tutorials/CMakeFiles/smartphone.dir/rule:
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 my_robot_tutorials/CMakeFiles/smartphone.dir/rule
+.PHONY : my_robot_tutorials/CMakeFiles/smartphone.dir/rule
+
+# Convenience name for target.
+smartphone: my_robot_tutorials/CMakeFiles/smartphone.dir/rule
+
+.PHONY : smartphone
+
+# fast build rule for target.
+smartphone/fast:
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/smartphone.dir/build.make my_robot_tutorials/CMakeFiles/smartphone.dir/build
+.PHONY : smartphone/fast
 
 # Convenience name for target.
 my_robot_tutorials/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
@@ -434,6 +464,60 @@ src/my_first_node.cpp.s:
 	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/node_cpp.dir/build.make my_robot_tutorials/CMakeFiles/node_cpp.dir/src/my_first_node.cpp.s
 .PHONY : src/my_first_node.cpp.s
 
+src/robot_news_radio_transmitter.o: src/robot_news_radio_transmitter.cpp.o
+
+.PHONY : src/robot_news_radio_transmitter.o
+
+# target to build an object file
+src/robot_news_radio_transmitter.cpp.o:
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/robot_news_radio_transmitter.dir/build.make my_robot_tutorials/CMakeFiles/robot_news_radio_transmitter.dir/src/robot_news_radio_transmitter.cpp.o
+.PHONY : src/robot_news_radio_transmitter.cpp.o
+
+src/robot_news_radio_transmitter.i: src/robot_news_radio_transmitter.cpp.i
+
+.PHONY : src/robot_news_radio_transmitter.i
+
+# target to preprocess a source file
+src/robot_news_radio_transmitter.cpp.i:
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/robot_news_radio_transmitter.dir/build.make my_robot_tutorials/CMakeFiles/robot_news_radio_transmitter.dir/src/robot_news_radio_transmitter.cpp.i
+.PHONY : src/robot_news_radio_transmitter.cpp.i
+
+src/robot_news_radio_transmitter.s: src/robot_news_radio_transmitter.cpp.s
+
+.PHONY : src/robot_news_radio_transmitter.s
+
+# target to generate assembly for a file
+src/robot_news_radio_transmitter.cpp.s:
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/robot_news_radio_transmitter.dir/build.make my_robot_tutorials/CMakeFiles/robot_news_radio_transmitter.dir/src/robot_news_radio_transmitter.cpp.s
+.PHONY : src/robot_news_radio_transmitter.cpp.s
+
+src/smartphone.o: src/smartphone.cpp.o
+
+.PHONY : src/smartphone.o
+
+# target to build an object file
+src/smartphone.cpp.o:
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/smartphone.dir/build.make my_robot_tutorials/CMakeFiles/smartphone.dir/src/smartphone.cpp.o
+.PHONY : src/smartphone.cpp.o
+
+src/smartphone.i: src/smartphone.cpp.i
+
+.PHONY : src/smartphone.i
+
+# target to preprocess a source file
+src/smartphone.cpp.i:
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/smartphone.dir/build.make my_robot_tutorials/CMakeFiles/smartphone.dir/src/smartphone.cpp.i
+.PHONY : src/smartphone.cpp.i
+
+src/smartphone.s: src/smartphone.cpp.s
+
+.PHONY : src/smartphone.s
+
+# target to generate assembly for a file
+src/smartphone.cpp.s:
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build && $(MAKE) -f my_robot_tutorials/CMakeFiles/smartphone.dir/build.make my_robot_tutorials/CMakeFiles/smartphone.dir/src/smartphone.cpp.s
+.PHONY : src/smartphone.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -444,10 +528,12 @@ help:
 	@echo "... install/local"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... robot_news_radio_transmitter"
 	@echo "... list_install_components"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... roscpp_generate_messages_eus"
 	@echo "... edit_cache"
+	@echo "... smartphone"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_lisp"
@@ -466,6 +552,12 @@ help:
 	@echo "... src/my_first_node.o"
 	@echo "... src/my_first_node.i"
 	@echo "... src/my_first_node.s"
+	@echo "... src/robot_news_radio_transmitter.o"
+	@echo "... src/robot_news_radio_transmitter.i"
+	@echo "... src/robot_news_radio_transmitter.s"
+	@echo "... src/smartphone.o"
+	@echo "... src/smartphone.i"
+	@echo "... src/smartphone.s"
 .PHONY : help
 
 

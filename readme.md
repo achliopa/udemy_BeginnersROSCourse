@@ -396,5 +396,62 @@ Publishers:
 Subscribers: 
  * /smartphone (http://ros-vm:45647/)
 
-
 ```
+
+### Lecture 25 - Create a C++ Publisher and Subscriber
+
+* we will reimplement the radio_news topic publisher and subscriber node with C++.
+* in our my_robot_tutorials/src folder we add a 'robot_news_radio_transmitter.cpp' file and edit it
+* we add boilerplate code nsming and starting the node
+```
+#include <ros/ros.h>
+
+int main(int argc, char **argv){
+	ros::init(argc,argv,"robot_news_radio_transmitter");
+	ros::NodeHandle nh;
+}
+```
+* we create a publisher object  `ros::Publisher pub = nh.advertise<std_msgs::String>( "/robot_news_radio", 10)` using nh.advertise() method which takes the message type as a template. w epass in only the topic name and thje queue size
+* we also need to include the lib `#include <std_msg/String.h>`
+* we create a Rate fot the loop `ros::Rate rate(2);`
+* we crete the nodes process excution loop
+```
+	while (ros::ok()) {
+	}
+```
+* in the loop we instantiate a msg object and set the data
+```
+		std_msgs::String msg;
+		msg.data = "Hi, this is Lydia from the Robot news Radio"
+```
+* we publish it using the Publiser publish method `pub,publish(msg);` and sleep `rate.sleep();`
+* we need to add the build cofig in CMakeLists.txt in the package folder and add
+```
+add_executable(robot_news_radio_transmitter src/robot_news_radio_transmitter.cpp)
+target_link_libraries(robot_news_radio_transmitter ${catkin_LIBRARIES})
+```
+* we go up to catkin_ws folder to buils with `catkin_make` and run the node with rosrun
+* we also run smartphone.py to listen to the topic
+* we ll build our c++ suscriber implementation in <package>/src and call it smartphone.cpp
+* we add boilerplate node code
+```
+#include <ros/ros.h>
+
+int main(int argc, char **argv) {
+	ros::init(argc,argv,"smartphone");
+	ros::NodeHandle nh;
+}
+```
+* we need to create a SUbscriber `	ros::Subscriber sub = nh.subscribe( "/robot_news_radio", 1000, callback_receive_radio_data);` passing in the topic name tha buffer size and the callback to call when message comes
+* we implement the calback. message is passed by reference and to get the data as string we use c_str() method
+```
+void callback_receive_radio_data(const std_msgs::String& msg){
+	ROS_INFO("Message receiveL : %s", msg.data.c_str())
+}
+```
+* to keep the node running and wait for messages we run `ros::spin()`
+* we add inCMakiList.txt the node and build it and run both nodes. they comm...
+
+### Lecture 26 - Use Anonymous Nodes to Launch Multiple Publishers/Subscribers
+
+* 
