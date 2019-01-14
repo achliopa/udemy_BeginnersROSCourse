@@ -814,10 +814,49 @@ add_service_files(
 
 ## Section 7 - Make Your Application Scalable with ROS Params and Launch Files
 
-### Lecture 52 - Intro
-
-* 
-
 ### Lecture 53 - What is a Paramater?
+
+* In a multipackage ROS application we want to be able to set cross-package global paramaters for the whole system. These parameters are called ROS parameters.
+* Example ROS parameters could be. Robot name, Sensors read frreewquency, Execution mode (simulation, testing,production)
+* This allows us to avoid code entaglement
+* When we launch the ROS Master (`roscore`) the Parameter Server is started automatically
+* The Parameter Server is a dictionary containing the grlobal parameters to be available from everywhere
+```
+/robot_name : "niryo_one"
+/sensor_read_frequency : 40
+/simulation_mode : false
+```
+* at any given time a node can read / write add or delete a global parameter
+ROS - Parameters:
+	* Parameter server: dictionary inside ROS master, accessible globally
+	* ROS parameter: one shared variable stored inside the parameter server
+	* a ROS paramter has a name and a datatype (Boolean, Int, Double, String, List
+
+### Lecture 54 - Manipulate Parameters with Command Line Tools
+
+* we start our ros master `roscore`
+* we see the parameter related terminal commands with `rosparam -h`
+```
+	rosparam set	set parameter
+	rosparam get	get parameter
+	rosparam load	load parameters from file
+	rosparam dump	dump parameters to file
+	rosparam delete	delete parameter
+	rosparam list	list parameter names
+
+```
+* commonly used a re get set and list `rosparam get /rosdistro`
+* with set we can make a new param or set existing one `rosparam set /robot_name "my_robot"` or `rosparam set /sensors_read_freq 40`
+
+### Lecture 55 - Handle Parameters with Python
+
+* we will use ros parameters in the nodes
+* we do a python node (edit the number publisher node)
+* we want to get the rate as parameter
+* we use rospy.get_param `publish_frequency = rospy.get_param("/number_publish_freq")`
+* we run and get an error. param is non existing	. we set it in terminal `rosparam set /number_publish_freq 2` 
+* we can set param from rospy `rospy.set_param("/another_param","Hello from node")`
+
+### Lecture 56 - Handle Parameters With C++
 
 * 
