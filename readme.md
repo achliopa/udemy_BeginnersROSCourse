@@ -729,4 +729,29 @@ string debug_message
 ```
 * we go to catwin_ws to build the package with `catkin_make`
 * it even generates for Javascript
-* our message is now located in 'catkin_ws/devel/include/my_robot_msgs/HardwareStatus.h'
+* our message is now located in *catkin_ws/devel/include/my_robot_msgs/HardwareStatus.h*
+
+### Lecture 46 - Use Your Custom Msg in Your Code
+
+* we go back to our nodes package
+* we need to add a depnedency to *my_robot_msgs* package to use the newly created message
+* in *package.xml* we add `  <depend>my_robot_msgs</depend>` which is a general dependency tag
+* in *CMakeLists.txt* we add 'my_robot_msgs' in the find_package block
+* we will implement a new py none in scripts/ 'hw_status_publisher.py' and make it executable
+* we add boilerplate rospy node code
+* we create the publisher `pub = rospy.Publisher("/my_robot/hardware_status", HardwareStatus, queue_size = 10)`
+* and import the message type on top `from my_robot.msgs.msg import HardwareStatus`
+* we add the rate and the while loop to publish passing the params we defined
+```
+	rate = rospy.Rate(5)
+
+	while not rospy.is_shutdown():
+		msg = HardwareStatus()
+		msg.temperature = 45
+		msg.are_motors_up = True
+		msg.debug_message = "Everything is running well"
+		pub.publish(msg)
+		rate.sleep()
+```
+* we rosrun the node and echo the topic
+* NOTE: After each catkin build we need to OPEN A NEW TERMINAL so source of the new .bash file is DOME 

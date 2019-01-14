@@ -8,3 +8,4 @@
 
 # modified environment variables
 export PWD="/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build"
+export PYTHONPATH="/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/lib/python2.7/dist-packages:$PYTHONPATH"

@@ -366,6 +366,9 @@ message_runtime_DIR:PATH=/opt/ros/melodic/share/message_runtime/cmake
 //Value Computed by CMake
 my_robot_msgs_BINARY_DIR:STATIC=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_msgs
 
+//The directory containing a CMake configuration file for my_robot_msgs.
+my_robot_msgs_DIR:PATH=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot_msgs/cmake
+
 //Value Computed by CMake
 my_robot_msgs_SOURCE_DIR:STATIC=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs
 
