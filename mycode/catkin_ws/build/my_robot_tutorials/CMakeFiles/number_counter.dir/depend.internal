@@ -60,5 +60,8 @@ my_robot_tutorials/CMakeFiles/number_counter.dir/src/number_counter.cpp.o
  /opt/ros/melodic/include/ros/wall_timer_options.h
  /opt/ros/melodic/include/rosconsole/macros_generated.h
  /opt/ros/melodic/include/std_msgs/Int64.h
+ /opt/ros/melodic/include/std_srvs/SetBool.h
+ /opt/ros/melodic/include/std_srvs/SetBoolRequest.h
+ /opt/ros/melodic/include/std_srvs/SetBoolResponse.h
  /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
  /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h

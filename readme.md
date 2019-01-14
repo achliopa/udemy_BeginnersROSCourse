@@ -648,3 +648,9 @@ bool handle_add_two_ints(rospy_tutorials::AddTwoInts::Request &req,
 * with both nodes running we see `rosservice list`
 * we `rosservice info /reset` is of type std_srvs/Empty that means no arguments. we call it to reset the turtle
 * we check turtle1/teleport_relative service. its type is 'turtlesim/TeleportRelative' it takes lienar and angular setpoints as float. we call it.
+
+### Lecture 40 - Service Activity
+
+* in our already implmented number_counter node we will create a service '/reset_number_count' of type std_srvs/SetBool to reset the counter
+* we add std_srvs import in package.xml and CMakeLists.xml
+* 
