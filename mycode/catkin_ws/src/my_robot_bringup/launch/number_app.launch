@@ -1,0 +1,6 @@
+<launch>
+	<param name="/number_publish_freq" type="double" value="3.0" />
+	<param name="/number_to_publish" type="int" value="230" />
+	<node name="number_publisher" pkg="my_robot_tutorials" type="number_publisher" />
+	<node name="number_counter" pkg="my_robot_tutorials" type="number_counter.py" />
+</launch>

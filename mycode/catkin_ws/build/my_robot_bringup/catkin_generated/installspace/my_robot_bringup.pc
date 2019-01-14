@@ -1,0 +1,8 @@
+prefix=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/install
+
+Name: my_robot_bringup
+Description: Description of my_robot_bringup
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/install/lib 
+Requires: 

@@ -872,4 +872,49 @@ ROS - Parameters:
 
 ### Lecture 57 - What is a Launch File?
 
+* ROS Launch file solves the problem of paramters initialization when we restart the ros master
+* unitialized param cause run timerrors for getters
+* Launch file allows us to initialize paramters and launch nodes from a file
+* in Launch file we can have conditional statements. group params etc
+
+### Lecture 58 - Create a Launch File to Start all Your parameters and Nodes
+
+* in catkin_ws/src we create a new package for launch files 	`catkin_create_pkg my_robot_bringup` no dependencies at all
+* we put them in a separate package to be reusable 
+* we build with `catkin_make`
+* we go in the new package folder 'catkin_ws/src/my_robot_bringup' and add a *launch/* folder
+* we create a launch file `touch number_app.launch` and edit it
+* the file is basically an xml file
+* we add the wrapper
+```
+<launch>
+</launch>
+```
+* in the launch tag we add our initialization. to set a prameter `<param name="/number_publish_freq" type="double" value="3.0" />`
+* we add a second param `<param name="/number_to_publish" type="int" value="230" />`
+* with launch file ready we start ourr master `roscore` and use our launchfile with `roslaunch my_robot_bringup number_app.launch` passing the package name that hosts the launch file and the launch file
+* our params are available and we can use them in our nodes
+* we can start nodes in the launch file
+```
+	<node name="number_publisher" pkg="my_robot_tutorials" type="number_publisher" />
+	<node name="number_counter" pkg="my_robot_tutorials" type="number_counter.py" />
+```
+* we roslaunch and we see the nodes starting, we have no log though 
+* even if i donot start the master and i roslaunch my launch file i see my nodes starting
+* roslaunch will start the aster if it finds there is no running
+* in this case if i ctrl+c the roslaunch ros master also stops
+
+## Section 8 - Bonus
+
+### Lecture 60 - Replay a Topic with ROS Bags
+
 * 
+
+## Section 9 - Conclusion
+
+### Lecture 65 - Useful Resources
+
+* ROS wiki
+* ROS answers
+* ROS discourse
+*  

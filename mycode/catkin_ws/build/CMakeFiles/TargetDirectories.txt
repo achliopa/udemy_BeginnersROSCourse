@@ -35,6 +35,14 @@
 /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/gtest/googlemock/gtest/CMakeFiles/list_install_components.dir
 /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/gtest/googlemock/gtest/CMakeFiles/gtest.dir
 /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/gtest/googlemock/gtest/CMakeFiles/rebuild_cache.dir
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_bringup/CMakeFiles/install/strip.dir
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_bringup/CMakeFiles/install/local.dir
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_bringup/CMakeFiles/test.dir
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_bringup/CMakeFiles/list_install_components.dir
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_bringup/CMakeFiles/edit_cache.dir
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_bringup/CMakeFiles/_catkin_empty_exported_target.dir
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_bringup/CMakeFiles/rebuild_cache.dir
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_bringup/CMakeFiles/install.dir
 /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_msgs/CMakeFiles/rebuild_cache.dir
 /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_msgs/CMakeFiles/my_robot_msgs_genpy.dir
 /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_nodejs.dir
