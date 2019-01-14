@@ -1,7 +1,10 @@
-# Udemy Course: ROS For Beginners
+# Udemy Courses: ROS For Beginners & ROS Actions
 
-* [Course Link](https://www.udemy.com/ros-for-beginners/)
+* [Course 1 Link](https://www.udemy.com/ros-for-beginners/)
+* [Course 2 Link](https://www.udemy.com/ros-actions/)
 * [Course Repo]()
+
+# Course 1: ROS For Beginners
 
 ## Section 1 - Introduction
 
@@ -908,7 +911,56 @@ ROS - Parameters:
 
 ### Lecture 60 - Replay a Topic with ROS Bags
 
-* 
+* ROS Bag is used for testing a robot app. it allows us to record and store messages from a topic and replay them later
+* we can record the data from sensors and replay them later when we cannot go out for testing
+* rosbag has its own set of commands `rosbag -h`
+```
+Usage: rosbag <subcommand> [options] [args]
+
+A bag is a file format in ROS for storing ROS message data. The rosbag command can record, replay and manipulate bags.
+
+Available subcommands:
+   check  	Determine whether a bag is playable in the current system, or if it can be migrated.
+   compress  	Compress one or more bag files.
+   decompress  	Decompress one or more bag files.
+   decrypt  	Decrypt one or more bag files.
+   encrypt  	Encrypt one or more bag files.
+   filter  	Filter the contents of the bag.
+   fix  	Repair the messages in a bag file so that it can be played in the current system.
+   help  
+   info  	Summarize the contents of one or more bag files.
+   play  	Play back the contents of one or more bag files in a time-synchronized fashion.
+   record  	Record a bag file with the contents of specified topics.
+   reindex  	Reindexes one or more bag files.
+
+For additional information, see http://wiki.ros.org/rosbag
+```
+* we start our master and rosrun our publisher `hw_status_publisher.py` 
+* we sniff the toipic channel `rostopic echo /my_robot/hardware_status` and its working
+* while the topic is playing we record it with `rosbag record /my_robot/hardware_status` passing the name of the ropic. our log says
+```
+[ INFO] [1547484795.232545654]: Subscribing to /my_robot/hardware_status
+[ INFO] [1547484795.236763911]: Recording to 2019-01-14-18-53-15.bag.
+```
+* we kill it (ctrl+c) and we see that a bag file was added on the PWD the working dir where we run the command
+* we can see info about the bag with `rosbag info <bag filename>`
+* we kill the node and replay the bag with `rosbag play <file>`
+* if we echo the topic we see the messgaes like they were published
+
+### Lecture 61 - Use OOP with ROS - Python
+
+* OOP = Object Oriented Programming
+* we have the same node implementation in notes one with OOP and one without
+* in OOP we use classes and initializer (constructor) setting local vars
+* in OOP methods are in the class and called with self.method()
+* in OOP we need to create the class and logidc is in the contructor
+
+### Lecture 62 - Use OOP with ROS - C++
+
+* in C++ all is done in main. (C style)
+* In OOP style we use public and private vars.
+* in OOP we initialize the class passing the handler. alla func is in contrustor... bad style
+* also in the callbacks we pass this in OOP as we the calling context will be different when theuy will be called (JS style)
 
 ## Section 9 - Conclusion
 
@@ -917,4 +969,55 @@ ROS - Parameters:
 * ROS wiki
 * ROS answers
 * ROS discourse
-*  
+
+# Course 2: ROS Actions
+
+## Section 1 - Introduction
+
+### Lecture 2 - Why ROS Actions? 
+
+* ROS provides 2 main communication tools (Topics and Services)
+* ROS Topics = named bus for nodes to send data streams
+* ROS Services = synchronus client/server comm
+* Services are synchronous and blocking. they are not suitable for complex actions as client is stuck waiting
+* say the service initiates an execution on server and we want to cancel it
+* how to get feedback while server executes the command initiated with a service
+* how the server can handle multiple commands
+* ROS Services limitations:
+	* Sunchronous
+	* Only made for quick actions and computations
+
+### Lecture 3 - What are ROS Actions
+
+* With ROS Actions we again have a Client Node (running an Action Client) and a Server Node (running an Action Server)
+* Client will send a Goal (equivalent to ROS Service Request) e.g Move to (x,y)
+* Upon receiving the goal the Server will start the execution Asynchronously
+* Client continues its execution
+* Client can at any time receive the GOal Status from the Server
+* Goal Status can have different  values (it gives info on the state of the goal)
+* the Action Server can send Feedback during Goal Execution (3.g % of the distance travelled to destination, current position etc)
+* Once the Goal execution is finished the Action Server sends a Result back to the Action CLient. The Result can contain data
+* During the Goal execution the Action Client can send a Cancel Goal request to the server. Server will cancel execution and return a Result
+* All the Communication is handles through ROS Topics. there is a topic for eachtype of message but are not used directly. They are hidden in the Action Server and Client libs (ROS actionlib API)
+* To create a Client Node that uses ROS Actions we need to import the ROS actionlib API and use the Action Client class.
+* To create a Server Node that uses ROS Actions we need to import the ROS actionlib API and use the Action Server class. 
+With ROS Actions we can:
+	* Asynchronously execute goals
+	* Get status and feedback on the current executed goal(s)
+	* Cancel a goal
+* In this course we will:
+* Start with simple action clients/server
+	* Send a goal
+	* Get feedback
+	* Cancel a goal
+* Then we go to next level
+	* Handle multiple goals
+	* Create our own goal policy
+	* and more...
+
+
+## Section 2 - Discover Actions With SimpleActionClient/SimpleActionServer
+
+### Lecture 6 - Intro
+
+* 
