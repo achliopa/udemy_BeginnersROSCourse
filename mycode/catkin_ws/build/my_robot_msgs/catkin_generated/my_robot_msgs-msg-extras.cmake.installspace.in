@@ -1,2 +1,2 @@
 set(my_robot_msgs_MESSAGE_FILES "msg/HardwareStatus.msg")
-set(my_robot_msgs_SERVICE_FILES "")
+set(my_robot_msgs_SERVICE_FILES "srv/ComputeDiskArea.srv;srv/SetLed.srv")

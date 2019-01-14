@@ -54,6 +54,8 @@ CMAKE_BINARY_DIR = /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycod
 include my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_eus.dir/progress.make
 
 my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_eus: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/msg/HardwareStatus.l
+my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_eus: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/srv/SetLed.l
+my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_eus: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/srv/ComputeDiskArea.l
 my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_eus: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/manifest.l
 
 
@@ -62,12 +64,24 @@ my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_eus: /home/achliopa/wor
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from my_robot_msgs/HardwareStatus.msg"
 	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_msgs && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/msg/HardwareStatus.msg -Imy_robot_msgs:/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p my_robot_msgs -o /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/msg
 
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/srv/SetLed.l: /opt/ros/melodic/lib/geneus/gen_eus.py
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/srv/SetLed.l: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/srv/SetLed.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from my_robot_msgs/SetLed.srv"
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_msgs && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/srv/SetLed.srv -Imy_robot_msgs:/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p my_robot_msgs -o /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/srv
+
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/srv/ComputeDiskArea.l: /opt/ros/melodic/lib/geneus/gen_eus.py
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/srv/ComputeDiskArea.l: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/srv/ComputeDiskArea.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp code from my_robot_msgs/ComputeDiskArea.srv"
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_msgs && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/srv/ComputeDiskArea.srv -Imy_robot_msgs:/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p my_robot_msgs -o /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/srv
+
 /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/manifest.l: /opt/ros/melodic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for my_robot_msgs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating EusLisp manifest code for my_robot_msgs"
 	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_msgs && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs my_robot_msgs std_msgs
 
 my_robot_msgs_generate_messages_eus: my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_eus
 my_robot_msgs_generate_messages_eus: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/msg/HardwareStatus.l
+my_robot_msgs_generate_messages_eus: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/srv/SetLed.l
+my_robot_msgs_generate_messages_eus: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/srv/ComputeDiskArea.l
 my_robot_msgs_generate_messages_eus: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/manifest.l
 my_robot_msgs_generate_messages_eus: my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_eus.dir/build.make
 

@@ -54,6 +54,8 @@ CMAKE_BINARY_DIR = /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycod
 include my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_cpp.dir/progress.make
 
 my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_cpp: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/HardwareStatus.h
+my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_cpp: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/SetLed.h
+my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_cpp: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/ComputeDiskArea.h
 
 
 /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/HardwareStatus.h: /opt/ros/melodic/lib/gencpp/gen_cpp.py
@@ -62,8 +64,24 @@ my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_cpp: /home/achliopa/wor
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from my_robot_msgs/HardwareStatus.msg"
 	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs && /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/msg/HardwareStatus.msg -Imy_robot_msgs:/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p my_robot_msgs -o /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs -e /opt/ros/melodic/share/gencpp/cmake/..
 
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/SetLed.h: /opt/ros/melodic/lib/gencpp/gen_cpp.py
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/SetLed.h: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/srv/SetLed.srv
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/SetLed.h: /opt/ros/melodic/share/gencpp/msg.h.template
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/SetLed.h: /opt/ros/melodic/share/gencpp/srv.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from my_robot_msgs/SetLed.srv"
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs && /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/srv/SetLed.srv -Imy_robot_msgs:/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p my_robot_msgs -o /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs -e /opt/ros/melodic/share/gencpp/cmake/..
+
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/ComputeDiskArea.h: /opt/ros/melodic/lib/gencpp/gen_cpp.py
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/ComputeDiskArea.h: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/srv/ComputeDiskArea.srv
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/ComputeDiskArea.h: /opt/ros/melodic/share/gencpp/msg.h.template
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/ComputeDiskArea.h: /opt/ros/melodic/share/gencpp/srv.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating C++ code from my_robot_msgs/ComputeDiskArea.srv"
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs && /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/srv/ComputeDiskArea.srv -Imy_robot_msgs:/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p my_robot_msgs -o /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs -e /opt/ros/melodic/share/gencpp/cmake/..
+
 my_robot_msgs_generate_messages_cpp: my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_cpp
 my_robot_msgs_generate_messages_cpp: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/HardwareStatus.h
+my_robot_msgs_generate_messages_cpp: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/SetLed.h
+my_robot_msgs_generate_messages_cpp: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/ComputeDiskArea.h
 my_robot_msgs_generate_messages_cpp: my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_cpp.dir/build.make
 
 .PHONY : my_robot_msgs_generate_messages_cpp

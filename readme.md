@@ -755,3 +755,69 @@ string debug_message
 ```
 * we rosrun the node and echo the topic
 * NOTE: After each catkin build we need to OPEN A NEW TERMINAL so source of the new .bash file is DOME 
+* Or `source ~/.bashrc`
+
+### Lecture 47 - Create your Own Custom Srv
+
+* we will use the already created package *my_robot_msg* for our custom service definition.
+* all is set up we just need to put our service source file in a new folder <package>/srv and after add it in the CMakeLists.txt in srv section like we did for msg
+* we name our file *ComputeDiskArea.srv*
+* we add the code for both messages
+```
+float64 radius
+---
+float64 area
+```
+* following the request --- response convention
+* we add it in CMakeLists.txt
+```
+add_service_files(
+   FILES
+   ComputeDiskArea.srv
+ )
+```
+* we goto catkin ws to build
+* after buils the devel/include/my_robot_msgs/ contains the messages for request and respons as well as the srv .h files
+* we can create a server and client to test it in our nodes package
+
+### Lecture 48 - Debug Msg and Srv With Command Line Tools
+
+* we have *rostopic* to debug the topic while *rosmsg* for the message definition
+* with `rosmsg -h` we see the available commnds
+```
+	rosmsg show	Show message description
+	rosmsg info	Alias for rosmsg show
+	rosmsg list	List all messages
+	rosmsg md5	Display message md5sum
+	rosmsg package	List messages in a package
+	rosmsg packages	List packages that contain messages
+```
+* with list we see all avaiable messages accordint to the imports. even if we dont use them
+* with `rosmsg show my_robot_msgs/HardwareStatus` we see the deinition of our custom message
+* same for service with *rosservice* group of commands we debug the service, with *rossrv* the service type used (and its messages) 
+* the available commands are
+```
+	rossrv show	Show service description
+	rossrv info	Alias for rossrv show
+	rossrv list	List all services
+	rossrv md5	Display service md5sum
+	rossrv package	List services in a package
+	rossrv packages	List packages that contain services
+```
+
+### Lecture 49 - Msg & Srv Activity
+
+* we will create a service (/set_led) with a new service definition for the battery / led application
+* we will have a battery node (client) and led panel node (server)
+* our request will contain led number and state (on = 1). also the response will be success: true (boolean)
+* battery state will change from full to empty every 7seconds and back to full in 3 seconds
+
+## Section 7 - Make Your Application Scalable with ROS Params and Launch Files
+
+### Lecture 52 - Intro
+
+* 
+
+### Lecture 53 - What is a Paramater?
+
+* 

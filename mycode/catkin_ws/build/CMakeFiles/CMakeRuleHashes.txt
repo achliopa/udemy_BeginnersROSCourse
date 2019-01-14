@@ -1,13 +1,26 @@
 # Hashes of file build rules.
+6bf5a9b76fdbdc9cec1c6a10b6ab2c17 /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/ComputeDiskArea.h
 384348d0bd7e3e574d85edb19c4dc5ed /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/HardwareStatus.h
+36bcd267a97a9ec0c0d2dd0b5ba4d9b6 /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/SetLed.h
 8a979550e9e6045b9c856961b26ebc18 /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/lib/python2.7/dist-packages/my_robot_msgs/msg/_HardwareStatus.py
 e802938302c24fb94499b031c23e2598 /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/lib/python2.7/dist-packages/my_robot_msgs/msg/__init__.py
+6acc604c48d5325c44febd382fb3ed9d /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/lib/python2.7/dist-packages/my_robot_msgs/srv/_ComputeDiskArea.py
+22e86ee2e885bf5f3032e44a11599f2c /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/lib/python2.7/dist-packages/my_robot_msgs/srv/_SetLed.py
+530a1de9a90b5242a3336a305fff6cd6 /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/lib/python2.7/dist-packages/my_robot_msgs/srv/__init__.py
 dce00e90ce3c0f6ce584755d6d69a37b /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/common-lisp/ros/my_robot_msgs/msg/HardwareStatus.lisp
+a70a0524c09809ea5b6b4ad4aba41c8a /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/common-lisp/ros/my_robot_msgs/srv/ComputeDiskArea.lisp
+b9d3caadf575339cf5e6a9e40f29759c /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/common-lisp/ros/my_robot_msgs/srv/SetLed.lisp
 2fad0beeaac99170f9872ecfa1d5286e /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/gennodejs/ros/my_robot_msgs/msg/HardwareStatus.js
+1f884f38059a5d0ac915eb7788561e1b /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/gennodejs/ros/my_robot_msgs/srv/ComputeDiskArea.js
+d027a83db55d1a04930e388948c665c5 /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/gennodejs/ros/my_robot_msgs/srv/SetLed.js
 784cb5f99a89d1feed9e341b2dbcf4ce /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/manifest.l
 9219862a944253e651e42e2df0cea7ec /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/msg/HardwareStatus.l
+e6f058c81814f486e722610e5a400762 /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/srv/ComputeDiskArea.l
+ff75d48145362dde5cef7acaa667aabb /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/roseus/ros/my_robot_msgs/srv/SetLed.l
 7bebe201e789f8f5847a5a4fc14f3e9d CMakeFiles/clean_test_results
+29f308e5c07ba7005d063209e9e9003f my_robot_msgs/CMakeFiles/_my_robot_msgs_generate_messages_check_deps_ComputeDiskArea
 e6f257261ce4da2bdd90576ab5684c56 my_robot_msgs/CMakeFiles/_my_robot_msgs_generate_messages_check_deps_HardwareStatus
+abceffcab66f45bda6801b9bfccc1d6e my_robot_msgs/CMakeFiles/_my_robot_msgs_generate_messages_check_deps_SetLed
 466e969000d5d21205ad8ac8391b4f95 my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_cpp
 466e969000d5d21205ad8ac8391b4f95 my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_eus
 466e969000d5d21205ad8ac8391b4f95 my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_lisp

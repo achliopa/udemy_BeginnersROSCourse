@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/my_robot_msgs_generate_messages_cpp"
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/HardwareStatus.h"
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/SetLed.h"
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/include/my_robot_msgs/ComputeDiskArea.h"
 )
 
 # Per-language clean rules from dependency scanning.

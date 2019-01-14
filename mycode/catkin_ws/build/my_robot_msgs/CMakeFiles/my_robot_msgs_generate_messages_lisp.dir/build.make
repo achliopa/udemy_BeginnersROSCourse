@@ -54,6 +54,8 @@ CMAKE_BINARY_DIR = /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycod
 include my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_lisp.dir/progress.make
 
 my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_lisp: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/common-lisp/ros/my_robot_msgs/msg/HardwareStatus.lisp
+my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_lisp: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/common-lisp/ros/my_robot_msgs/srv/SetLed.lisp
+my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_lisp: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/common-lisp/ros/my_robot_msgs/srv/ComputeDiskArea.lisp
 
 
 /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/common-lisp/ros/my_robot_msgs/msg/HardwareStatus.lisp: /opt/ros/melodic/lib/genlisp/gen_lisp.py
@@ -61,8 +63,20 @@ my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_lisp: /home/achliopa/wo
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from my_robot_msgs/HardwareStatus.msg"
 	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_msgs && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/msg/HardwareStatus.msg -Imy_robot_msgs:/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p my_robot_msgs -o /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/common-lisp/ros/my_robot_msgs/msg
 
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/common-lisp/ros/my_robot_msgs/srv/SetLed.lisp: /opt/ros/melodic/lib/genlisp/gen_lisp.py
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/common-lisp/ros/my_robot_msgs/srv/SetLed.lisp: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/srv/SetLed.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Lisp code from my_robot_msgs/SetLed.srv"
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_msgs && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/srv/SetLed.srv -Imy_robot_msgs:/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p my_robot_msgs -o /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/common-lisp/ros/my_robot_msgs/srv
+
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/common-lisp/ros/my_robot_msgs/srv/ComputeDiskArea.lisp: /opt/ros/melodic/lib/genlisp/gen_lisp.py
+/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/common-lisp/ros/my_robot_msgs/srv/ComputeDiskArea.lisp: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/srv/ComputeDiskArea.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Lisp code from my_robot_msgs/ComputeDiskArea.srv"
+	cd /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_msgs && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/srv/ComputeDiskArea.srv -Imy_robot_msgs:/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot_msgs/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p my_robot_msgs -o /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/common-lisp/ros/my_robot_msgs/srv
+
 my_robot_msgs_generate_messages_lisp: my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_lisp
 my_robot_msgs_generate_messages_lisp: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/common-lisp/ros/my_robot_msgs/msg/HardwareStatus.lisp
+my_robot_msgs_generate_messages_lisp: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/common-lisp/ros/my_robot_msgs/srv/SetLed.lisp
+my_robot_msgs_generate_messages_lisp: /home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/common-lisp/ros/my_robot_msgs/srv/ComputeDiskArea.lisp
 my_robot_msgs_generate_messages_lisp: my_robot_msgs/CMakeFiles/my_robot_msgs_generate_messages_lisp.dir/build.make
 
 .PHONY : my_robot_msgs_generate_messages_lisp
