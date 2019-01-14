@@ -859,4 +859,17 @@ ROS - Parameters:
 
 ### Lecture 56 - Handle Parameters With C++
 
+* we do the same in <package>/src/number_publisher.cpp
+* the way to get a ROS Param in C++ using NodeHandle
+```
+	double publish_frequency;
+	nh.getParam("/number_publish_freq",publish_frequency);
+	ros::Rate rate(publish_frequency);
+```
+* in C++ accessing a nonexisting param returns null not exception.
+* we make and test
+* to set a param `nh.setParam("/another_parameter","Hello from Cpp node");`
+
+### Lecture 57 - What is a Launch File?
+
 * 
