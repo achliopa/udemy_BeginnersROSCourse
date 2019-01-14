@@ -653,4 +653,80 @@ bool handle_add_two_ints(rospy_tutorials::AddTwoInts::Request &req,
 
 * in our already implmented number_counter node we will create a service '/reset_number_count' of type std_srvs/SetBool to reset the counter
 * we add std_srvs import in package.xml and CMakeLists.xml
-* 
+
+## Section 6 - Customize Your Application with Msg and Srv Files
+
+### Lecture 44 - What are Msg and Srv Definitions?
+
+* A Topic is defined by:
+	* Name: (e.g /number_count)
+	* Msg definition (ex:std_msgs/Int64)
+
+* A Service is defined by:
+	* Name (e.g /reset_counter)
+	* Srv definitions (ex: std_srvs/SetBool) (one definition for Request Msg and one for Response Msg)
+
+* To use the Msg in our code we need to create a Msg definition inb the Package
+* When we build with catkin source code will be generated for any supported lang (by default C++ and Python): 
+	* Msg C++ source code
+	* Msg Python source code
+	* Msg ... source code
+* then we can include them as libs in our Node code
+* To create msg definitions we can use any of the primitive datatypes listed in [msg doc](http://wiki.ros.org/msg) and also arrays
+* we can also create msg definitions using other existing message definitions (from available packages)
+	* std_msgs
+	* sensor_msgs
+	* geometry_msgs
+	* ...
+* for services we can also build on services from existing packages: e.g std_srvs
+* 3rd party message and service definitions can be installed as external packages (we have seen this) by adding them in package.xml and CMakeList.txt for C++ or by imports in Python
+* all standard MSg and Srv definitions are well documented in ros.org
+* e.g 'geometry_msgs/Twist.msg' has a geometry_msgs/Vector3 dtype (linear) and a geometry_msgs/Vector3 dtype (angular)
+
+* std_srvs has 3 standard service messages (Trigger,SetBool,Empty). Service message documentation is divided by --- (above is the Request message below the Response message)
+
+### Lecture 45 - Create and Build Your Own Custom Msg
+
+* in our catkin_ws/src we will create a new package for our messages
+* custom messages can be added in node packages. but is more convenient to put our project messages in a separate reusable package
+* we run `catkin_create_pkg my_robot_msgs roscpp rospy std_msgs` as we want access to both libs and to std_msgs to build upon other message types
+* we remove the 2 generated folders (include and src) and keep only the CMakeLists.txt and package.xml files
+* we first edit the package.xml. a message package needs 2 dependencies additions `  <build_depend>std_msgs</build_depend>` and `  <exec_depend>message_runtime</exec_depend>`
+* we now edit the CMakeLists.txt
+* in find_package we add 'message_generation'
+```
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  rospy
+  std_msgs
+  message_generation
+)
+```
+* we go to 'Declare ROS messages, services and actions' section
+* we uncomment the following to be able to include std_msgs in our definitions
+```
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
+```
+* in 'catkin specidic configuration' section we uncomment `CATKIN_DEPENDS roscpp rospy std_msgs` and add 'message_runtime' in this line
+* our package is now ready for messages.
+* we add a msg/ folder in package root and add a msg file `touch HardwareStatus.msg`
+* we will make the message using primitive datatype and std_msgs types
+```
+int64 temperature
+bool are_motors_up
+string debug_message
+```
+* we go backt o CMakeLists.txt to add it in the message section (we uncomment the msg section and add it in FILES)
+```
+## Generate messages in the 'msg' folder
+ add_message_files(
+   FILES
+   HardwareStatus.msg
+ )
+```
+* we go to catwin_ws to build the package with `catkin_make`
+* it even generates for Javascript
+* our message is now located in 'catkin_ws/devel/include/my_robot_msgs/HardwareStatus.h'
