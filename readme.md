@@ -1020,4 +1020,152 @@ With ROS Actions we can:
 
 ### Lecture 6 - Intro
 
-* 
+* ROS team has created simplified Action Classes on top of the ActionClient and ActionServer classes. the SimpleActionClient and SimpleActionServer. they can handle only one goal at the time and the goal policy is fixed
+* For some application that enough and its a good introduction to the topic.
+* Steps to take:
+	* create Action definition
+	* create the server with the actionlib SimpleActionServer
+	* create the client with the actionlib SimpleActionClient
+	* discover and experiment
+
+### Lecture 7 - Create an Action Definition and Generate the Action Messages
+
+* NOTE: DUE TO ISSUES WITH Adding ACtions to the existing my_robot_msgs package we create a new 'my_robot2_msgs' in catkin_ws/src we run `catkin_create_pkg my_robot2_msgs roscpp rospy std_msgs actionlib_msgs`
+* in our simple applciation the server will have to count up a given number and the client will give teh target number.
+* server will give feedback to the client as a % reached by the counter
+* we will return the last number reached by the server as Result of the ROS Action
+* as Actions use TOpics underneath. we first have to generate some messages
+* Action definitions contain not 2 messages (likes ervices) but 3 (Goal,Result,Feedback)
+* we will create one package for messages, service and action definitions. normally in projects all these go to a separate package.
+* we will use the existing 'my_robot_msgs' package. if we created it from scratch we would use `catkin_create_pkg my_robot_msgs roscpp rospy sts_msgs actionlib_msgs` as we have created it in prev lecture we just have to add the actionlib_msgs
+* we add them in CMakeLists.txt
+```
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  rospy
+  std_msgs
+  actionlib_msgs
+  message_generation
+)
+```
+```
+catkin_package(
+#  INCLUDE_DIRS include
+#  LIBRARIES my_robot_msgs
+  CATKIN_DEPENDS roscpp rospy std_msgs actionlib_msgs  message_runtime
+#  DEPENDS system_lib
+)
+```
+```
+## Generate added messages and services with any dependencies listed here
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+  actionlib_msgs
+)
+```
+
+* in package.xml we add 'actionlib_msgs' in <build_depend> , <build_export_depend> and   <exec_depend>
+* in contrast with previous course he says that we sould add  an <exec_depend> for meesage_generation while in prev lecture it was message_runtime and message_generation was a <build_depend>
+* we create a directory named 'action' and cd into it
+* we create a file 'CountUntil.action' and write aour action definition in it (much like a serv)
+```
+#goal
+int64 max_number
+float64 wait_duration
+---
+#result
+int64 count
+---
+#feedback
+float64 percentage
+```
+* we uncomment action section in CMakeLists.txt and add the action definition file
+```
+# Generate actions in the 'action' folder
+ add_action_files(
+   FILES
+   CountUntil.action
+ )
+```
+* we build with catkin_make
+* we source .bashrc
+* it generated a lot of messages in different languages
+* in catkin_ws/devel/include/ we have the generated h files
+```
+-rw-r--r-- 1 achliopa achliopa  9903 Ιαν  14 23:49 CountUntilActionFeedback.h
+-rw-r--r-- 1 achliopa achliopa  7898 Ιαν  14 23:49 CountUntilActionGoal.h
+-rw-r--r-- 1 achliopa achliopa 11264 Ιαν  14 23:49 CountUntilAction.h
+-rw-r--r-- 1 achliopa achliopa  9794 Ιαν  14 23:49 CountUntilActionResult.h
+-rw-r--r-- 1 achliopa achliopa  5517 Ιαν  14 23:49 CountUntilFeedback.h
+-rw-r--r-- 1 achliopa achliopa  5655 Ιαν  14 23:49 CountUntilGoal.h
+-rw-r--r-- 1 achliopa achliopa  5394 Ιαν  14 23:49 CountUntilResult.h
+```
+* also in cat_ws/devel/share/my_robot_msg/msg we have the generated msg definitions
+* CountUntilGOal.msg is in COuntUntilActionGOal.msg which is in CountUntilAction.msg
+
+### Lecture 8 - Create a Server with the SimleActionServer
+
+* NOTE: Same as in previous led WE CREATE A NEW PACKAGE `catkin_create_pkg my_robot2_tutorials roscpp rospy std_msgs my_robot2_msgs`
+* we use the package 'my_robot_tutorials' for the SimpleActionServer implementation. 
+* it is ready as we have all the dependencies inside (event our messages package)
+* if we were to create it from scratch we should run `catkin_create_pkg my_robot_tutorials roscpp rospy std_msgs my_robot_msgs`
+* we go to 'catkin_ws/src/my_robot_tutorials/scripts'
+* we create a new file 'count_untill_server.py' and make it executable
+* we add boilerplate node python code
+* we create a python Class w/ constructo method
+```
+class CountUntilServer:
+	def __init__(self):
+```
+* in the constructorwe will create the simple action server 
+```
+		self._as = actionlib.SimpleActionServer("/count_untill",
+			CountUntilAction, 
+			execute_cb=self.on_goal,
+			auto_start=False)
+```
+* we pass in the action name , the action type (which we import as msg `from my_robot_msgs.msg import CountUntilAction`, the callback and if we want to start the server on creation)
+* we start the server `self._as.start()` and set the counter to 0 `self._counter = 0`
+* we implement the callback as class method `def on_goal(self, goal):`
+* we import the Goal msg `from my_robot_msgs.msg import CountUntilGoal`
+* when a client sends the goal the on_goal callback will be triggered. in the callback we log the goal passed
+* the complete implementation of the on_goal callback is 
+```
+	def on_goal(self, goal):
+		rospy.loginfo("A goal has been received")
+		rospy.loginfo(goal)
+		max_number = goal.max_number
+		wait_duration = goal.wait_duration
+		rate = rospy.Rate(1.0/wait_duration)
+
+		while self._counter < max_number:
+			sel_counter += 1
+			rate.sleep()
+
+		result = CountUntilResult()
+		result.count = self._counter
+		self._as.set_succeeded(result)
+```
+* in the callback:
+	* we get the goal msg contents (after inmporting it `from my_robot_msgs.msg import CountUntilGoal`)
+	* we start a rate using the wait_duration param
+	* we start a loop to simulate execution increasing the object vounter attribute according to the rate.
+	* when we exit theloop we create a result message (after mporting the type `from my_robot_msgs.msg import CountUntilResult`)
+	* we sent the result data and using the SimpleActionServer we use the set_succeeded method passing the result
+
+* in the main we create a server and spin
+```
+	server = CountUntilServer()
+	rospy.spin()
+```
+* the ongoal will listen to any goal message coming from the clients
+* we start the master and rosrun the node
+* with node runnign we check the topics
+
+### Lecture 9 - Create a Client with the SimpleActionClient
+
+* in the scripts folder i create a new file 'count_until_client.py' and make it exec and add boilerplate code
+* we create a new class 'CountUntilActionClient' and instantiate in the main
+* in the class contructor we create an action client as attribute `self._ac = actionlib.SimpleActionClient("/count_until",CountUntilAction)` we pass the name and the type. we import the type like in server
+* in the contructor we have to tell the client to wait for the server to wake up

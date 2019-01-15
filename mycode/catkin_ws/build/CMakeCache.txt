@@ -281,6 +281,9 @@ _gtest_INCLUDES:FILEPATH=/usr/include/gtest/gtest.h
 //Path to a file.
 _gtest_SOURCES:FILEPATH=/usr/src/gtest/src/gtest.cc
 
+//The directory containing a CMake configuration file for actionlib_msgs.
+actionlib_msgs_DIR:PATH=/opt/ros/melodic/share/actionlib_msgs/cmake
+
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/melodic/share/catkin/cmake
 
@@ -362,6 +365,21 @@ message_generation_DIR:PATH=/opt/ros/melodic/share/message_generation/cmake
 
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/melodic/share/message_runtime/cmake
+
+//Value Computed by CMake
+my_robot2_msgs_BINARY_DIR:STATIC=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot2_msgs
+
+//The directory containing a CMake configuration file for my_robot2_msgs.
+my_robot2_msgs_DIR:PATH=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/cmake
+
+//Value Computed by CMake
+my_robot2_msgs_SOURCE_DIR:STATIC=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot2_msgs
+
+//Value Computed by CMake
+my_robot2_tutorials_BINARY_DIR:STATIC=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot2_tutorials
+
+//Value Computed by CMake
+my_robot2_tutorials_SOURCE_DIR:STATIC=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/src/my_robot2_tutorials
 
 //Value Computed by CMake
 my_robot_bringup_BINARY_DIR:STATIC=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/build/my_robot_bringup
@@ -527,7 +545,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

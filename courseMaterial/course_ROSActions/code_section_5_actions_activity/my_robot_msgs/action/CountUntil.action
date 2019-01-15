@@ -1,0 +1,9 @@
+#goal
+int64 max_number
+float64 wait_duration
+---
+#result
+int64 count
+---
+#feedback
+float64 percentage

@@ -1,0 +1,8 @@
+prefix=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel
+
+Name: my_robot2_tutorials
+Description: Description of my_robot2_tutorials
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/lib 
+Requires: 

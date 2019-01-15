@@ -1,2 +1,2 @@
-my_robot_bringup:my_robot_msgs:my_robot_tutorials
+my_robot2_msgs:my_robot2_tutorials:my_robot_bringup:my_robot_msgs:my_robot_tutorials
 -DCATKIN_DEVEL_PREFIX=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/install -G Unix Makefiles
