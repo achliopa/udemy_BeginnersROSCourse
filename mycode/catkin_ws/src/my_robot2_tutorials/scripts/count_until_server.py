@@ -27,6 +27,7 @@ class CountUntilServer:
 
 		while self._counter < max_number:
 			self._counter += 1
+			rospy.loginfo(self._counter)
 			rate.sleep()
 
 		result = CountUntilResult()

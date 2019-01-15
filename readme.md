@@ -1169,3 +1169,26 @@ class CountUntilServer:
 * we create a new class 'CountUntilActionClient' and instantiate in the main
 * in the class contructor we create an action client as attribute `self._ac = actionlib.SimpleActionClient("/count_until",CountUntilAction)` we pass the name and the type. we import the type like in server
 * in the contructor we have to tell the client to wait for the server to wake up
+`self._ac.wait_for_server()`
+* we create a new class method callled 'send_goal_and_get_result'. we import CountUntilGoal and usit to send a goal to the server
+* then we send the goal using the actionclients send_goal method
+* we choose the easy way to block the client waiting for the result. this is not good practice
+* then we get back the result all in the same method and log it
+```
+	def send_goal_and_get_result(self):
+		goal = CountUntilGoal(max_number=10, wait_duration=0.5)
+		self._ac.send_goal(goal)
+		rospy.loginfo("Goal has been sent.")
+		self._ac.wait_for_result()
+		rospy.loginfo(self._ac.get_result())
+```
+* our main does only instantiations
+```
+if __name__ == "__main__":
+	rospy.init_node("count_until_client")
+
+	client = CountUntilActionClient()
+	client.send_goal_and_get_result()
+```
+* we test and it works
+* `rospy.Duration(3.0)` is the way to   set a timeperiod in rospy
