@@ -1192,3 +1192,17 @@ if __name__ == "__main__":
 ```
 * we test and it works
 * `rospy.Duration(3.0)` is the way to   set a timeperiod in rospy
+
+### Lecture 10 - Make your Client Asynchronous
+
+* we use actions to make asynch calls but our client is still synchronous as it waits and stalls waiting for the result (like in service)
+* to make it asynchronous we have to use callbacks
+* w eadd another the param to the send_goal method. the done_cb (callaback) . the callback is called when server is done when it reaches a done state `self._ac.send_goal(goal, done_cb=self.done_callback)`
+* we implement the callback just logging info
+```
+	def done_callback(self, status, result):
+		rospy.loginfo("Status is : "+str(status))
+		rospy.loginfo("Result is : "+str(result))
+```
+* as now we dont wait to keep our process alive we need to spin in main
+* we test and it works. our client is asynch now
