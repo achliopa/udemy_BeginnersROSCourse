@@ -19,6 +19,8 @@ class CountUntilActionClient:
 		rospy.loginfo("Goal has been sent.")
 		# self._ac.wait_for_result()
 		# rospy.loginfo(self._ac.get_result())
+		rospy.sleep(2)
+		self._ac.cancel_goal()
 
 	def done_callback(self, status, result):
 		rospy.loginfo("Status is : "+str(status))

@@ -1229,4 +1229,46 @@ def feedback_callback(self, feedback):
 
 ### Lecture 12 - Set a Goal as Succeeded or Aborted
 
+* in our current implementation we have set the goal result as successful.
+* however it can be aborted
+* we go to the server. we will add a rule. if counter goes >9 it aborts. if it reaches max_num it succeeds. in essence wee will always fail unles we send a goal with max num < 9
+* sending back aborted is easy using the SimpleActionServer.set_aborted(Result) method
+```
+		if success:
+			self._as.set_succeeded(result)
+		else:
+			self._as.set_aborted(result)
+```
+* success status is 3, aborted is 4
+
+### Lecture 13 - Understand Goal Status
+
+* we can see the GlobalStatus message definitions in [docs](http://docs.ros.org/melodic/actionlib_msgs/html/GoalStatus.html)
+* we use actionlib_msgs as a dependency in our package so its available
+* whenever there is a state change inthe goal execution the server will send the new goalstatus to the client. goalstatus is also sent  with feedback, result
+* we can use the names instead of the vals
+* in simple action server there is only one goal so there is no rejection
+* some statuses are flagged as terminal.. as client
+* the client done callback we have seen so far is looking into exactly that. goal status changes to predefined states
+
+### Lecture 14 - Cancel a Goal
+
+* we ll look now how a client can ask the serverto cancel goal execution
+* in the server execution loop we add a check to see if we he received a preempt req from client . if yes we break raisin a flag to send back the proper response
+```
+			if self._as.is_preempt_requested():
+				preempted = True
+```
+* to return it we use the special funtion set_preempted
+```
+		if preempted:
+			rospy.loginfo("Preempted")
+			self._as.set_preempted(result)
+```
+* now we have to add in clinent a method to request preemption
+* we use the `self._ac.cancel_goal()`
+* we get back a goal status 2
+
+### Lecture 15 - Debug ROS Topics used in ROS Actions
+
 * 
