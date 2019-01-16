@@ -1271,4 +1271,192 @@ def feedback_callback(self, feedback):
 
 ### Lecture 15 - Debug ROS Topics used in ROS Actions
 
+* while  server is running we have 5 topics related to the action. we can see them in rostopic list
+```
+/count_until/cancel
+/count_until/feedback
+/count_until/goal
+/count_until/result
+/count_until/status
+```
+* we echo the 5 topics and run the client
+* goal contains a timestamp a client id the params. goal has 3 sections header: goal_id: and goal:
+* in general these topics contain useful info like timestamps, ids statuses for debugging
+* status provides a continuous stream
+
+### Lecture 16 - Use rqt_graph to Get More Info about ROS Topics
+
+* graph shows the action as sqare withg a  3drect for <action>/action_topics
+* nodes (cient, server) are seen to exchange info with the topics block 
+* if we unclick Actions we see each topic in the action with its connections to the nodes
+* we see also who publishes in each topic
+
+### Lecture 17 - C++ Create a Server with the SimpleActionServer
+
+* we compare the 2 implementations C++ and python (C++ is available in course notes)
+* imports are the same
+* in both a class is defined for the server
+* in both a SimpleActionServer is defined as attribute (passing the ActionType) and a counter
+* both have constructor. in C++ the two protected attributes are initialized in the contstructor signature using : (initization list
+* in actionserver intialization we pass the  name,the on_goal callback in a strange boost::bind sysntax. *_1* passes the params to the on+goal method
+* main is the same with python and the callback is very similar (syntax change)
+* in C++ in on_goal callback we pass a reference to the goal messate type using a type ConstPtr
+* to get goal params we use -> (pointer)
+* in C++ in CMakeLists we need to add actionlib in find package
+* we add `find_package(Boost REQUIRED COMPONENTS system)` for boost
+* in Build we need to add `${Boost_INCLUDE_DIRS}` along with catkin
+* we need to add  executables and target_link_libraries like in the first course
+* of course `catkin_make`
+
+### Lecture 18 - C++ Create a Server with the SimpleActionClient
+
+* we have same imports (in C++ we import actionlib/client/terminal_state.h)
+* main is same
+* creation and initialization of the ActionCLient is like Server in C++ different from py
+* initalization at constructor is simpler as we dont pass callabck. true starts a thread (like spin to get all callbacks) no need to spin
+* in send_goal... things are complex we use boost::bind for the callbacks and *_1* and *_2* for the arguments
+* all messages are passed as refs
+
+## Lecture 19 - Documentation for SimpleActionClient and Server
+
+* [Python SimpleActionServer](https://docs.ros.org/melodic/api/actionlib/html/classactionlib_1_1simple__action__server_1_1SimpleActionServer.html)
+* [Python SimpleActionClient](https://docs.ros.org/melodic/api/actionlib/html/classactionlib_1_1simple__action__client_1_1SimpleActionClient.html)
+* [C++ SimpleActionServer](https://docs.ros.org/melodic/api/actionlib/html/classactionlib_1_1SimpleActionServer.html)
+* [C++ SimpleActionClient](https://docs.ros.org/melodic/api/actionlib/html/classactionlib_1_1SimpleActionClient.html)
+
+## Section 3 - Activity: Experiment on SimpleActionClient/SimpleActionServer
+
+### Lecture 21 - Intro
+
+* in this activity we will have to move a mobile robot using actions
+* our robot will move along 1 axis from 0 to 100m
+* the initial position is at 50m
+* THe Client(SimpleActionClient) will send a goal to teh Server(SimpleActionServer)
+* the goal
+```
+# goal
+position # m
+velocity # m/s
+---
+# result
+position
+message
+---
+# feedback
+current_position
+```
+* we need always to keep track of position
+* we will also be able to cancel the goal
+* we ll criate a subscriber in the client. when client receives a  message  it will cancel the goal
+
+### Lecture 22 - Create the Action Definition
+
+* we will use the my_robot2_msgs package for the new Action
+* we implemetna new action *MoveRobot.action*
+```
+#goal
+int64 position # m
+int64 velocity # m/s
+---
+#result
+int64 position
+string message
+---
+#feedback
+int64 current_position
+```
+* we add the action in CMakeLists.txt and build
+
+### Lecture 23 - Create the Server
+
+* im my_robot2_tutorial package we add a new script *move_robot.server* and make it exec and add boilerplate code
+* we import all 4 messages from action
+* we create a class MoveRobotServer to implement the SimpleActionServer (as an attribute)
+* we add a constructor for the class
+* we create an object of the class in  main and spin
+* in the constructor we instantiate and initialize the SimpleServer as class attribute `self._as = actionlib.SimpleActionServer("/move_robot",MoveRobotAction,
+			execute_cb=self.on_goal, auto_start=False)`
+* we start the server in constructor `self._as.start()`
+* we set the current position as attribute and initialize `self._current_position = 50`
+* we log
+* we implement the goal callback
+* in it we exctract the goal params and do a while loop to simulate moveemnts (goal execution) . we also add the esape functionality according to messageds received and the reply logic
+* in the while loop: check for termination,exec(move), send feedback sleep
+* we send feedback as separate function
+* when client asks for preempt is not guaranteed tha th the server will preempt
+* in SimpleActionServer when goal arrives it will be rejected or accpted based on sysntax correctness. in python we are in the  callback if message is accepted so we dont have ahook to send reply toinform user. but we can add contreol code based on the param vals
+```
+	def send_feedback(self):
+		feedback = MoveRobotFeedback()
+		feedback.current_position = self._current_position
+		self._as.publish_feedback(feedback)
+
+	def on_goal(self, goal):
+		rospy.loginfo("A goal has been received")
+		rospy.loginfo(goal)
+
+		goal_position = goal.position
+		velocity = goal.velocity
+
+		success = False
+		preempted = False
+		invalid_paramters = False
+		message = ""
+		rate = rospy.Rate(1.0)
+
+		if goal_position < 0 or goal_position >100:
+			message = "Invalid goal position. Must be [0,100]"
+			invalid_paramters = True
+
+		if goal_position == self._current_position:
+			success = True
+			message = "Current Position is already correct!"
+
+		while not rospy.is_shutdown() and not sucess and not invalid_paramters:
+			# check for goal termination
+			if self._as.is_preempt_requested():
+				if goal_position == self._current_position:
+					message = "Preempted but already at goal position!"
+					success = True
+				else:
+					message = "Preempted and stopped execution"
+					preempted = True
+				break
+			# exec here
+			diff = goal_position - self._current_position
+			if diff == 0:
+				message = "Success"
+				succcess = True
+				break
+			elif diff < 0:
+				if abs(diff) >=velocity:
+					self._current_position -= velocity
+				else:
+					self._current_position -= abs(diff)
+			elif diff > 0:
+				if diff >= velocity:
+					self._current_position += velocity				
+				else:
+					self._current_position += diff
+			# publish feedback
+			self.send_feedback()
+			rate.sleep()
+		# send result
+		result = MoveRobotResult()
+		result.position = self._current_position
+		result.message = message
+		rospy.loginfo("send goal result to client")
+		if preempted:
+			rospy.loginfo("Preempted")
+			self._as.set_preempted(result)
+		elif success:
+			rospy.loginfo("Success")
+			self._as.set_succeeded(result)
+		else:
+			rospy.loginfo("Aborted")
+			self._as.set_aborted(result)
+```
+
+### Lecture 24 - Create the Client
+
 * 

@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "my_robot2_msgs: 7 messages, 0 services")
+message(STATUS "my_robot2_msgs: 14 messages, 0 services")
 
 set(MSG_I_FLAGS "-Imy_robot2_msgs:/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg;-Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg")
 
@@ -17,6 +17,21 @@ add_custom_target(my_robot2_msgs_generate_messages ALL)
 
 
 
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg" NAME_WE)
+add_custom_target(_my_robot2_msgs_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "my_robot2_msgs" "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg" ""
+)
+
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionGoal.msg" NAME_WE)
+add_custom_target(_my_robot2_msgs_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "my_robot2_msgs" "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionGoal.msg" "actionlib_msgs/GoalID:my_robot2_msgs/MoveRobotGoal:std_msgs/Header"
+)
+
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg" NAME_WE)
+add_custom_target(_my_robot2_msgs_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "my_robot2_msgs" "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg" ""
+)
+
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilAction.msg" NAME_WE)
 add_custom_target(_my_robot2_msgs_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "my_robot2_msgs" "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilAction.msg" "actionlib_msgs/GoalID:actionlib_msgs/GoalStatus:my_robot2_msgs/CountUntilGoal:my_robot2_msgs/CountUntilActionFeedback:my_robot2_msgs/CountUntilActionGoal:my_robot2_msgs/CountUntilFeedback:my_robot2_msgs/CountUntilActionResult:std_msgs/Header:my_robot2_msgs/CountUntilResult"
@@ -27,9 +42,24 @@ add_custom_target(_my_robot2_msgs_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "my_robot2_msgs" "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionResult.msg" "actionlib_msgs/GoalID:actionlib_msgs/GoalStatus:my_robot2_msgs/CountUntilResult:std_msgs/Header"
 )
 
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionResult.msg" NAME_WE)
+add_custom_target(_my_robot2_msgs_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "my_robot2_msgs" "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionResult.msg" "actionlib_msgs/GoalID:actionlib_msgs/GoalStatus:my_robot2_msgs/MoveRobotResult:std_msgs/Header"
+)
+
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilResult.msg" NAME_WE)
 add_custom_target(_my_robot2_msgs_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "my_robot2_msgs" "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilResult.msg" ""
+)
+
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotAction.msg" NAME_WE)
+add_custom_target(_my_robot2_msgs_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "my_robot2_msgs" "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotAction.msg" "actionlib_msgs/GoalID:my_robot2_msgs/MoveRobotActionGoal:actionlib_msgs/GoalStatus:my_robot2_msgs/MoveRobotFeedback:my_robot2_msgs/MoveRobotResult:std_msgs/Header:my_robot2_msgs/MoveRobotGoal:my_robot2_msgs/MoveRobotActionFeedback:my_robot2_msgs/MoveRobotActionResult"
+)
+
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionFeedback.msg" NAME_WE)
+add_custom_target(_my_robot2_msgs_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "my_robot2_msgs" "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionFeedback.msg" "actionlib_msgs/GoalID:my_robot2_msgs/MoveRobotFeedback:actionlib_msgs/GoalStatus:std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilGoal.msg" NAME_WE)
@@ -40,6 +70,11 @@ add_custom_target(_my_robot2_msgs_generate_messages_check_deps_${_filename}
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionFeedback.msg" NAME_WE)
 add_custom_target(_my_robot2_msgs_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "my_robot2_msgs" "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionFeedback.msg" "my_robot2_msgs/CountUntilFeedback:actionlib_msgs/GoalID:actionlib_msgs/GoalStatus:std_msgs/Header"
+)
+
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg" NAME_WE)
+add_custom_target(_my_robot2_msgs_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "my_robot2_msgs" "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg" ""
 )
 
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilFeedback.msg" NAME_WE)
@@ -59,6 +94,24 @@ add_custom_target(_my_robot2_msgs_generate_messages_check_deps_${_filename}
 ### Section generating for lang: gencpp
 ### Generating Messages
 _generate_msg_cpp(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_cpp(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionFeedback.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_cpp(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_cpp(my_robot2_msgs
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilAction.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilGoal.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionGoal.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilResult.msg"
@@ -71,9 +124,27 @@ _generate_msg_cpp(my_robot2_msgs
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/my_robot2_msgs
 )
 _generate_msg_cpp(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionResult.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_cpp(my_robot2_msgs
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilResult.msg"
   "${MSG_I_FLAGS}"
   ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_cpp(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotAction.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionGoal.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionResult.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_cpp(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionGoal.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/my_robot2_msgs
 )
 _generate_msg_cpp(my_robot2_msgs
@@ -86,6 +157,12 @@ _generate_msg_cpp(my_robot2_msgs
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionFeedback.msg"
   "${MSG_I_FLAGS}"
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilFeedback.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_cpp(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg"
+  "${MSG_I_FLAGS}"
+  ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/my_robot2_msgs
 )
 _generate_msg_cpp(my_robot2_msgs
@@ -115,15 +192,29 @@ add_custom_target(my_robot2_msgs_generate_messages_cpp
 add_dependencies(my_robot2_msgs_generate_messages my_robot2_msgs_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_cpp _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionGoal.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_cpp _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_cpp _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilAction.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_cpp _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionResult.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_cpp _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionResult.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_cpp _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilResult.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_cpp _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotAction.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_cpp _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionFeedback.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_cpp _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilGoal.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_cpp _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionFeedback.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_cpp _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_cpp _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilFeedback.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_cpp _my_robot2_msgs_generate_messages_check_deps_${_filename})
@@ -140,6 +231,24 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS my_robot2_msgs_generate_messages_cp
 ### Section generating for lang: geneus
 ### Generating Messages
 _generate_msg_eus(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_eus(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionFeedback.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_eus(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_eus(my_robot2_msgs
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilAction.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilGoal.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionGoal.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilResult.msg"
@@ -152,9 +261,27 @@ _generate_msg_eus(my_robot2_msgs
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/my_robot2_msgs
 )
 _generate_msg_eus(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionResult.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_eus(my_robot2_msgs
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilResult.msg"
   "${MSG_I_FLAGS}"
   ""
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_eus(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotAction.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionGoal.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionResult.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_eus(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionGoal.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/my_robot2_msgs
 )
 _generate_msg_eus(my_robot2_msgs
@@ -167,6 +294,12 @@ _generate_msg_eus(my_robot2_msgs
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionFeedback.msg"
   "${MSG_I_FLAGS}"
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilFeedback.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_eus(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg"
+  "${MSG_I_FLAGS}"
+  ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/my_robot2_msgs
 )
 _generate_msg_eus(my_robot2_msgs
@@ -196,15 +329,29 @@ add_custom_target(my_robot2_msgs_generate_messages_eus
 add_dependencies(my_robot2_msgs_generate_messages my_robot2_msgs_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_eus _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionGoal.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_eus _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_eus _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilAction.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_eus _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionResult.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_eus _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionResult.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_eus _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilResult.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_eus _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotAction.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_eus _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionFeedback.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_eus _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilGoal.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_eus _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionFeedback.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_eus _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_eus _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilFeedback.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_eus _my_robot2_msgs_generate_messages_check_deps_${_filename})
@@ -221,6 +368,24 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS my_robot2_msgs_generate_messages_eu
 ### Section generating for lang: genlisp
 ### Generating Messages
 _generate_msg_lisp(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_lisp(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionFeedback.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_lisp(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_lisp(my_robot2_msgs
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilAction.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilGoal.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionGoal.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilResult.msg"
@@ -233,9 +398,27 @@ _generate_msg_lisp(my_robot2_msgs
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/my_robot2_msgs
 )
 _generate_msg_lisp(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionResult.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_lisp(my_robot2_msgs
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilResult.msg"
   "${MSG_I_FLAGS}"
   ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_lisp(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotAction.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionGoal.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionResult.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_lisp(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionGoal.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/my_robot2_msgs
 )
 _generate_msg_lisp(my_robot2_msgs
@@ -248,6 +431,12 @@ _generate_msg_lisp(my_robot2_msgs
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionFeedback.msg"
   "${MSG_I_FLAGS}"
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilFeedback.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_lisp(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg"
+  "${MSG_I_FLAGS}"
+  ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/my_robot2_msgs
 )
 _generate_msg_lisp(my_robot2_msgs
@@ -277,15 +466,29 @@ add_custom_target(my_robot2_msgs_generate_messages_lisp
 add_dependencies(my_robot2_msgs_generate_messages my_robot2_msgs_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_lisp _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionGoal.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_lisp _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_lisp _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilAction.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_lisp _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionResult.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_lisp _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionResult.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_lisp _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilResult.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_lisp _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotAction.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_lisp _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionFeedback.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_lisp _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilGoal.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_lisp _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionFeedback.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_lisp _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_lisp _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilFeedback.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_lisp _my_robot2_msgs_generate_messages_check_deps_${_filename})
@@ -302,6 +505,24 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS my_robot2_msgs_generate_messages_li
 ### Section generating for lang: gennodejs
 ### Generating Messages
 _generate_msg_nodejs(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_nodejs(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionFeedback.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_nodejs(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_nodejs(my_robot2_msgs
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilAction.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilGoal.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionGoal.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilResult.msg"
@@ -314,9 +535,27 @@ _generate_msg_nodejs(my_robot2_msgs
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/my_robot2_msgs
 )
 _generate_msg_nodejs(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionResult.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_nodejs(my_robot2_msgs
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilResult.msg"
   "${MSG_I_FLAGS}"
   ""
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_nodejs(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotAction.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionGoal.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionResult.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_nodejs(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionGoal.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/my_robot2_msgs
 )
 _generate_msg_nodejs(my_robot2_msgs
@@ -329,6 +568,12 @@ _generate_msg_nodejs(my_robot2_msgs
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionFeedback.msg"
   "${MSG_I_FLAGS}"
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilFeedback.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_nodejs(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg"
+  "${MSG_I_FLAGS}"
+  ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/my_robot2_msgs
 )
 _generate_msg_nodejs(my_robot2_msgs
@@ -358,15 +603,29 @@ add_custom_target(my_robot2_msgs_generate_messages_nodejs
 add_dependencies(my_robot2_msgs_generate_messages my_robot2_msgs_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_nodejs _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionGoal.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_nodejs _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_nodejs _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilAction.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_nodejs _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionResult.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_nodejs _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionResult.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_nodejs _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilResult.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_nodejs _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotAction.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_nodejs _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionFeedback.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_nodejs _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilGoal.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_nodejs _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionFeedback.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_nodejs _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_nodejs _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilFeedback.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_nodejs _my_robot2_msgs_generate_messages_check_deps_${_filename})
@@ -383,6 +642,24 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS my_robot2_msgs_generate_messages_no
 ### Section generating for lang: genpy
 ### Generating Messages
 _generate_msg_py(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_py(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionFeedback.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_py(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_py(my_robot2_msgs
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilAction.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilGoal.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionGoal.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilResult.msg"
@@ -395,9 +672,27 @@ _generate_msg_py(my_robot2_msgs
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/my_robot2_msgs
 )
 _generate_msg_py(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionResult.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_py(my_robot2_msgs
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilResult.msg"
   "${MSG_I_FLAGS}"
   ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_py(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotAction.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionGoal.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionFeedback.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionResult.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_py(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionGoal.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/my_robot2_msgs
 )
 _generate_msg_py(my_robot2_msgs
@@ -410,6 +705,12 @@ _generate_msg_py(my_robot2_msgs
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionFeedback.msg"
   "${MSG_I_FLAGS}"
   "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilFeedback.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/melodic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg;/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/my_robot2_msgs
+)
+_generate_msg_py(my_robot2_msgs
+  "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg"
+  "${MSG_I_FLAGS}"
+  ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/my_robot2_msgs
 )
 _generate_msg_py(my_robot2_msgs
@@ -439,15 +740,29 @@ add_custom_target(my_robot2_msgs_generate_messages_py
 add_dependencies(my_robot2_msgs_generate_messages my_robot2_msgs_generate_messages_py)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotGoal.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_py _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionGoal.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_py _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotResult.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_py _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilAction.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_py _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionResult.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_py _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionResult.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_py _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilResult.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_py _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotAction.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_py _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotActionFeedback.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_py _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilGoal.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_py _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilActionFeedback.msg" NAME_WE)
+add_dependencies(my_robot2_msgs_generate_messages_py _my_robot2_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/MoveRobotFeedback.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_py _my_robot2_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/achliopa/workspace/udemy/udemy_BeginnersROSCourse/mycode/catkin_ws/devel/share/my_robot2_msgs/msg/CountUntilFeedback.msg" NAME_WE)
 add_dependencies(my_robot2_msgs_generate_messages_py _my_robot2_msgs_generate_messages_check_deps_${_filename})

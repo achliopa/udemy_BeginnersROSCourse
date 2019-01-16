@@ -5,3 +5,10 @@ from ._CountUntilActionResult import *
 from ._CountUntilFeedback import *
 from ._CountUntilGoal import *
 from ._CountUntilResult import *
+from ._MoveRobotAction import *
+from ._MoveRobotActionFeedback import *
+from ._MoveRobotActionGoal import *
+from ._MoveRobotActionResult import *
+from ._MoveRobotFeedback import *
+from ._MoveRobotGoal import *
+from ._MoveRobotResult import *
