@@ -1206,3 +1206,27 @@ if __name__ == "__main__":
 ```
 * as now we dont wait to keep our process alive we need to spin in main
 * we test and it works. our client is asynch now
+
+### Lecture 11 - Send Feedback from the Server tothe Client
+
+* with actions we can send feedback from the server to the client while we are handling the goal
+* we will replace the loginf in the goal execution while loop in the server with sending ack feedback we import the Feedback msg `from my_robot2_msgs.msg import CountUntilFeedback`
+* after loging in the while loop we send feedback with
+```
+			feedback = CountUntilFeedback()
+			feedback.percentage = float(self._counter) / float(max_number)
+			self._as.publish_feedback(feedback)
+```
+* we need to handle the feedback in the client
+* if we echo the feedback with rostopic we see its much more complex
+* in client we need to modify the `self._ac.send_goal(goal, done_cb=self.done_callback)` adding the feedback callback `feedback_cb=self.feedback_callback`
+* we implement the callback. we just printout the message
+```
+def feedback_callback(self, feedback):
+		rospy.loginfo(feedback)
+```
+* we test and it works (asynchronous now) with no code blocking
+
+### Lecture 12 - Set a Goal as Succeeded or Aborted
+
+* 
