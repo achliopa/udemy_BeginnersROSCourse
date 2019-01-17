@@ -1668,6 +1668,101 @@ self._ac.cancel_goal()
 
 ## Section 5 Activity: Create a Complete ActionClient and ActionServer
 
+### Lecture 36 - Intro
+
+* we will redo the SimpleActionServer and SimpleActionCLient from CountUntil Exqample.
+* we will also apply a policy for accepting only one goal and to put goals in a queue
+
 ### Lecture 37 - Create a Server with the ActionServer
 
-* 
+* we will use the ActionServe class and the ServerGoalHandle from actionlib
+* we create an 'activity_action_server.py' script and make it executable and add boilerplate node rospy code
+* we do the same imports as SimpleActionServer create a boilerplate class and instantiate it in main and spin
+* in constructor
+	* we create an actionserver `self._as = actionlib.ActionServer("/count_until",CountUntilAction,
+			self.on_goal, self.on_cancel,auto_start=False)` now we pass 2 callbacks
+* we start the server
+* the on_goal callback
+	* singature `def on_goal(self, goal_handle)` it needs a goal_handle obj
+* the on_cancel callback
+	* singature `def on_cancel(self, goal_handle)` it needs a goal_handle obj
+* we start a simpleactionclient to test and see that goal_handle is an 'actionlib.server_goal_handle.ServerGoalHanlde instance'
+* goal handle comes packed with methods we can use to see info about goal
+* with .get_goal() we ge the goal params
+* we add a 'def process_goal(self,goal_handle):' helper method in the class to process the goal
+* in process_goal
+	* we extract goal params
+	* we need to choose the next state sending the appropriate command to server
+	* the command to be accepted has to respect the state machine
+	* if we send illegal command eg `goal_handle.set_succeeded()` we get error
+	* we will validate and move to a legal state with command
+```
+	def process_goal(self,goal_handle):
+		rospy.loginfo("Processing goal")
+		goal = goal_handle.get_goal()
+		max_number = goal.max_number
+		wait_duration = goal.wait_duration
+		
+		# Validate parameters
+		if max_number > 10:
+			goal_handle.set_rejected()
+			return
+		goal_handle.set_accepted()
+```
+	* we also do the actual processing like in simple action server (actually impelmenting the bigest part of goal statemachine
+```
+		counter = 0
+		rate = rospy.Rate(1.0/wait_duration)
+
+		success = False
+		preempted = False
+
+		while not rospy.is_shutdown():
+			counter += 1
+			rospy.loginfo(counter)
+			# toso cancel request
+			if counter >= max_number:
+				success = True
+				break
+			feedback = CountUntilFeedback()
+			feedback.percentage = float(counter) / float(max_number)
+			goal_handle.publish_feedback(feedback)
+			rate.sleep()
+
+		result = CountUntilResult()
+		result.count = counter
+		rospy.loginfo("Send Result to CLient")
+
+		if preempted:
+			rospy.loginfo("Preempted")
+			goal_handle.set_canceled(result)
+		elif success:
+			rospy.loginfo("Succeeded")
+			goal_handle.set_canceled(result)
+		else:
+			rospy.loginfo("Aborted")
+			goal_handle.set_aborted()
+		rospy.loginfo(" --- Finished processing the goal")
+```
+* we see that clacel request from client is ignored even if we have a cllabck.
+* this happens because we are inb the on_goal callback which prempts the on_cancel while executing
+* when cancel is accepted is too late
+* we need to make on_goal very fast
+* the way to do it is to process the goal in a new thread
+* we import the threading python library `import threading`
+* we replace process_goal() call in on_goal with
+```
+		w = threading.Thread(name="Worker",target=self.process_goal, args=(goal_handle,))
+		w.start()
+```
+* what we did was to create a thread to execute process_goal and start it 
+* we test aagain and it works (we see the cancel request log)
+* now we need to process it (we create a local var `self._cancel_request = False` as gflag. we raise it in on_cancle callback and we process it in process_goal thread while loop)
+```
+			if self._cancel_request == True:
+				self._cancel_request = False
+				preempted = True
+				break
+```
+* we need to cancel the flag
+* THATS ITs
