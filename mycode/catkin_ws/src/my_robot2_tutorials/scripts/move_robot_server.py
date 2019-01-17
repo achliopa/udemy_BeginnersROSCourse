@@ -41,7 +41,7 @@ class MoveRobotServer:
 			success = True
 			message = "Current Position is already correct!"
 
-		while not rospy.is_shutdown() and not sucess and not invalid_paramters:
+		while not rospy.is_shutdown() and not success and not invalid_paramters:
 			# check for goal termination
 			if self._as.is_preempt_requested():
 				if goal_position == self._current_position:
@@ -55,7 +55,7 @@ class MoveRobotServer:
 			diff = goal_position - self._current_position
 			if diff == 0:
 				message = "Success"
-				succcess = True
+				success = True
 				break
 			elif diff < 0:
 				if abs(diff) >=velocity:

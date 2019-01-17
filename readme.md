@@ -1459,4 +1459,44 @@ int64 current_position
 
 ### Lecture 24 - Create the Client
 
+* we create a new script for client 'move_robot_client.py' and make it executable
+* we add boilerplate code
+* we add a class MoveRobotClient
+* we implement main: instantiate client class, send goal and spin
+```
+if __name__ == "__main__":
+	rospy.init_node("move_robot_client")
+
+	client = MoveRobotClient()
+	client.send_goal()
+	rospy.spin()
+```
+* in constructor 
+	* we instantiate a SimpleActionClient as attribute `self._ac = actionlib.SimpleActionClient("/move_robot", MoveRobotAction)`
+	* we wait for server to start `self._ac.wait_for_server()`
+* we implement the send_goal method
+	* we create a goal
+	* we fill the params
+	* we send the goal passing in the callbacks for done and for feedback
+* we implement the 2 callbacks
+```
+	def send_goal(self):
+		goal MoveRobotGoal()
+		goal.position = 77
+		goal.velocity = 5
+		self._ac.send_goal(goal, done_cb=self.done_callback,
+			feedback_cb=self.feedback_callback)
+		rospy.loginfo("Goal has been sent")
+
+	def done_callback(self, status, result):
+		rospy.loginfo("Status: "+str(status))
+		rospy.loginfo("Result: "+str(result))
+
+	def feedback_callback(self, feedback):
+		rospy.loginfo(feedback)
+```
+* we test with rosrun and all ok, boundary test also ok
+
+### Lecture 25 - Cancel the Goal with Another Subscriber
+
 * 
