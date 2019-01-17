@@ -1499,4 +1499,175 @@ if __name__ == "__main__":
 
 ### Lecture 25 - Cancel the Goal with Another Subscriber
 
+* first we test our ability to cancel goal through the action
+* in send goal we add 
+```
+rospy.sleep(3)
+self._ac.cancel_goal()
+```
+* we test and it works (preemption)
+* if we resend cancel request after succeding the goal in the server we get an error in python
+* we will implementt a topic to cancel on publish from a remote client. move robot client acts as subscriber for the topic. we add it in constructor `self.sub = rospy.Subscriber("/cancel_move",Empty,self.cancel_move_callback)` we use std_msgs.Empty.msg
+* we add the callback
+```
+	def cancel_move_callback(self, req):
+		rospy.loginfo("Revceived msg to cancel move")
+		self._ac.cancel_goal()
+```
+* we  simulate the publisher with rostopic pub `rostopic pub /cancel_move std_msgs/Empty "{}"
+`
+* IT WORKS!!!
+* usually when we cancel a goal we send a new goal. or we send a new goal without cancelling first one (SimpleActionServer when receiving a new goal cancels the first one and accepts it) 
+
+### Lecture 27 - C++ - Create the Server
+
+* we compare C++ and python code. C++ code in course material. nothing new.. like previous comparison
+* no new imports . boost binds is imported in CMakeLists.txt
+
+### Lecture 28 - C++ - Create the Client
+
+* we compare C++ and python code. C++ code in course material. nothing new.. like previous comparison
+
+## Section 4 - Go To The Next Step: ActionClient aqnd ActionServer Explained
+
+### Lecture 31 - What are the SimpleActions Main Limitations?
+
+* SimpleActionClasses are supersets of std ActionClasses 
+* they hide some complexity by preseting a set of rules
+* SimpleActionServer Limitations:
+	* Handles only one goal at a time
+	* When new goal arrives. Cancel first goal and accept the new
+* SimpleActionClient Limitation:
+	* Handles only one goal at a time (if we send a new goal old callbacks are not followed anymore) 
+
+### Lecture 32 - When SimpleActions are Just What We Need
+
+* in SimpleActions the goal policy is prechosen
+* if we want to use 1 goal per server and update ionly that goal SimpleAction is OK 
+
+### Lecture 33 - ActionServer Explained
+
+* The Goal Status has a ActionServer StateMachine:
+* PENDING State (=0):
+	* Purpose: To validate the Goal and apply the Goal Policy. We can put the goals in this state if we implement a goal queue
+	* Entry Condition: Receive Goal(Client Triggered)<= ActiveClient
+	* Exit Condition: setRejected(Server Triggered)=>REJECTED
+	* Exit Condition: setAccepted(Server Triggered)=>ACTIVE
+	* Exit Condition: CancelRequest(Client Triggered)=>RECALLING
+* ACTIVE state (=1):
+	* Purpose: to process, execute the goal
+	* Entry Condition: setAccepted(Server Triggered)<=PENDING
+	* Exit Condition: setSucceeded(Server Triggered)=>SUCCEEDED
+	* Exit Condition: setAborted(Server Triggered)=>ABORTED
+	* Exit Condition: CancelRequest(Client Triggered)=>PREEMPTING
+* RECALLING state (=7):
+	* Purpose: transient state. its up to the user to decide whast he wants to be the next State
+	* Entry Condition: CancelRequest(Client Triggered)<=PENDING
+	* Exit Condition: setRejected(Server Triggered)=>REJECTED
+	* Exit Condition: setAccepted(Server Triggered)=>PREEMPTING
+	* Exit Condition: setCancelled(Server Triggered)=>RECALLED
+* PREEMPTING state (=6):
+	* Purpose: transient state. its up to the user to decide whast he wants to be the next State
+	* Entry Condition: CancelRequest(Client Triggered)<=RECALLING
+	* Entry Condition: CancelRequest(Client Triggered)<=ACTIVE
+	* Exit Condition: setAborted(Server Triggered)=>ABORTED
+	* Exit Condition: setCancelled(Server Triggered)=>PREEMPTED
+* REJECTED state (Terminal State) (=5):
+	* Purpose: Terminal state if paramters are rejected
+	* Entry Condition: setRejected(Server Triggered)<= PENDING
+	* Entry Condition: setRejected(Server Triggered)<= RECALLING
+* RECALLED state (Terminal State) (=8):
+	* Entry Condition: setCancelled(Server Triggered)<= RECALLING
+* PREEMPTED state (Terminal State) (=2):
+	* Entry Condition: setCancelled(Server Triggered)<= PREEMPTING
+* SUCCEEDED state (Terminal State) (=3):
+	* Purpose: Terminal state if goal is reached
+	* Entry Condition: setSucceeded(Server Triggered)<= ACTIVE
+	* Entry Condition: setSucceeded(Server Triggered)<= PREEMPTING
+* ABORTED state (Terminal State) (=4):
+	* Purpose: Terminal state if there is a problem in execution
+	* Entry Condition: setAccepted(Server Triggered)<= ACTIVE
+	* Entry Condition: setAccepted(Server Triggered)<= PREEMPTING
+
+* In SimpleActiveServer there is no Rejected state. Aborted is used instead
+* RECALLING state is seldom used (only if we implement goal queues and keep goals in Pending state)
+* Default publish rate of ActionStatus topic is 10Hz
+* ActionServer can handle many goals at the same time each wiuth its own statemachine and ID
+
+### Lecture 34 - ActionClient Explained
+
+* Client will try to keep track of the Server State implementing its own StateMachine
+* ActionClient Goal StateMachine:
+* WAITING_FOR_GOAL_ACK state:
+	* Purpose:
+	* Entry Condition: (Client Triggered) <= Send Goal
+	* Exit Condition: {PENDING} (Server Triggered) => PENDING
+	* Exit Condition: {ACTIVE} (Server Triggered) => ACTIVE
+	* Exit Condition: Cancel Goal (Client Triggered) => WAITING_FOR_CANCEL_ACK
+* PENDING state:
+	* Purpose:
+	* Entry Condition: {PENDING} (Server Triggered) <= WAITING_FOR_CANCEL_ACK
+	* Exit Condition: {RECALLING} (Server Triggered) => RECALLING
+	* Exit Condition: {ACTIVE} (Server Triggered) => ACTIVE
+	* Exit Condition: {REJECTED} (Server Triggered) => WAITING_FOR_RESULT
+	* Exit Condition: Cancel Goal (Client Triggered) => WAITING_FOR_CANCEL_ACK
+* ACTIVE state:
+	* Purpose:
+	* Entry Condition: {ACTIVE} (Server Triggered) <= WAITING_FOR_GOAL_ACK
+	* Entry Condition: {ACTIVE} (Server Triggered) <= PENDING
+	* Exit Condition: {PREEMPTING} (Server Triggered) => PREEMPTING
+	* Exit Condition: {ABORTED|SUCCEEDED} (Server Triggered) => WAITING_FOR_RESULT
+	* Exit Condition: Cancel Goal (Client Triggered) => WAITING_FOR_CANCEL_ACK
+* RECALLING state:
+	* Purpose:
+	* Entry Condition: {RECALLING} (Server Triggered) <= PENDING
+	* Entry Condition: {RECALLING} (Server Triggered) <= WAITING_FOR_CANCEL_ACK
+	* Exit Condition: {PREEMPTING} (Server Triggered) => PREEMPTING
+	* Exit Condition: {RECALLED|REJECTED} (Server Triggered) => WAITING_FOR_RESULT
+* PREEMPTING state:
+	* Purpose:
+	* Entry Condition: {PREEMPTING} (Server Triggered) <= ACTIVE
+	* Entry Condition: {PREEMPTING} (Server Triggered) <= WAITING_FOR_CANCEL_ACK
+	* Entry Condition: {PREEMPTING} (Server Triggered) <= RECALLING
+	* Exit Condition: {PREEMPTED|ABORTED|SUCCEEDED} (Server Triggered) => WAITING_FOR_RESULT
+* WAITING_FOR_CANCEL_ACK state:
+	* Purpose:
+	* Entry Condition: Cancel Goal (Client Triggered) <= PENDING
+	* Entry Condition: Cancel Goal (Client Triggered) <= ACTIVE
+	* Entry Condition: Cancel Goal (Client Triggered) <= WAITING_FOR_GOAL_ACK
+	* Exit Condition: {RECALLING} (Server Triggered) => RECALLING
+	* Exit Condition: {PREEMPTING} (Server Triggered) => PREEMPTING
+* WAITING_FOR_RESULT state:
+	* Purpose:
+	* Entry Condition: {REJECTED} (Server Triggered) <= PENDING
+	* Entry Condition: {RECALLED|REJECTED} (Server Triggered) <= RECALLING
+	* Entry Condition: {PREEMPTED|ABORTED|SUCCEEDED} (Server Triggered) <= PREEMPTING
+	* Entry Condition: (Server Triggered) <= ACTIVE
+	* Exit Condition: Receive Result Message (Server Triggered) => DONE
+* DONE state (Terminal State):
+	* Purpose:
+	* Entry Condition: Receive Result Message (Server Triggered) <= WAITING_FOR_RESULT
+* with {} we show the status change 'new status' as received from ActiveServer in the ActionStatus topic
+* An ActionClient can run multiple goals. each with its own statemachine and id
+* We can have multiple ActionClients talking to a single ActionServer
+* We can use ActionCLient with SimpleActionServer and vice versa
+* Goal ID is created by the client, before sending a goal
+* A client can cancel the goal from another client
+
+### Lecture 35 - Documentation Links
+
+* [Python Ref List](https://docs.ros.org/melodic/api/actionlib/html/namespaceactionlib.html)
+* [Python ActionServer](https://docs.ros.org/melodic/api/actionlib/html/classactionlib_1_1action__server_1_1ActionServer.html)
+* [Python ServerGoalHandle](https://docs.ros.org/melodic/api/actionlib/html/classactionlib_1_1server__goal__handle_1_1ServerGoalHandle.html)
+* [Python ActionClient](https://docs.ros.org/melodic/api/actionlib/html/classactionlib_1_1action__client_1_1ActionClient.html)
+* [Python ClientGoalHandle](https://docs.ros.org/melodic/api/actionlib/html/classactionlib_1_1action__client_1_1ClientGoalHandle.html)
+* [C++ ActionServer](https://docs.ros.org/melodic/api/actionlib/html/classactionlib_1_1ActionServer.html)
+* [C++ ServerGoalHandle](https://docs.ros.org/melodic/api/actionlib/html/classactionlib_1_1ServerGoalHandle.html)
+* [C++ ActionClient](https://docs.ros.org/melodic/api/actionlib/html/classactionlib_1_1ActionClient.html)
+* [C++ ClientGoalHandle](https://docs.ros.org/melodic/api/actionlib/html/classactionlib_1_1ClientGoalHandle.html)
+
+## Section 5 Activity: Create a Complete ActionClient and ActionServer
+
+### Lecture 37 - Create a Server with the ActionServer
+
 * 

@@ -4,15 +4,19 @@ import rospy
 import actionlib
 from my_robot2_msgs.msg import MoveRobotAction
 from my_robot2_msgs.msg import MoveRobotGoal
-from my_robot2_msgs.msg import MoveRobotResult
-from my_robot2_msgs.msg import MoveRobotFeedback
-
+from std_msgs.msg import Empty
 class MoveRobotClient:
 
 	def __init__(self):
 		self._ac = actionlib.SimpleActionClient("/move_robot", MoveRobotAction)
 		self._ac.wait_for_server()
 		rospy.loginfo("Server is up! Let's send a goal!")
+
+		self.sub = rospy.Subscriber("/cancel_move",Empty,self.cancel_move_callback)
+
+	def cancel_move_callback(self, req):
+		rospy.loginfo("Revceived msg to cancel move")
+		self._ac.cancel_goal()
 
 	def send_goal(self):
 		goal = MoveRobotGoal()
