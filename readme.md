@@ -1889,3 +1889,18 @@ self._ac.cancel_goal()
 * in essense we check if there are goal_handles in queue and we proicess the first one (oldest) in a FIFO list style
 * we will send 2 goals from client one after the other to test if they are processed sequentialy
 * IT WORKS
+
+### Lecture 41 - C++ - Create a Server With the ActionServer
+
+* just a comparison between python and C++ based on the course code samples
+* see the CMakeLists.txt file for dependencies and how to add them 
+* we use vectors, maps and threads
+* instead of dictionary in C++ we use map 
+* we use a vector of threads. why? for each new goal we create a thread for non blocking the callbacks to other goals
+* in C++ if we just create a thread we have only a pointer and a mem leak
+* in the Destructor of th ewclass when thread is finished we join and delete it
+
+### Lecture 42 - C++ - Create a Client with the ActionClient
+
+* just a comparison between python and C++ based on the course code samples
+* in C++ we waitforshutdown
