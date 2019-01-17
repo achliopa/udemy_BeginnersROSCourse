@@ -1831,4 +1831,61 @@ self._ac.cancel_goal()
 * in process_goal we again get the goal-id and check the dictionary by this keuy for the flag to change state
 * we need to remove the goal_id from dictionary when goal is done `self._cancel_goals.pop(goal_id)`
 * in client if we run multiple goals there is no easy way to get the id like the server
-* we make our own ids by filling in a dictionary
+* we make our own ids by filling in a dictionary `self._goal_handles = {}`
+* in main we fill the dict `client._goal_handles["1"] = goal_handle1`
+* in callbacks when we trace we use it FOR TRACINGGG/ FOR DEBUGGING. HOLY CRAPPP
+```
+		index = 0 
+		for i in self._goal_handles:
+			if self._goal_handles[i] == goal_handle
+				index = i
+				break
+```
+
+### Lecture 40 - Change the Goal Policy
+
+* now we will change the goal policy of the goal
+* we will implement a policy to handle only one goal at the time
+* if a client sends a goal while another is executed we will not process it. we will reject it
+* all mods will be done in the server side
+* we add this in on_goal
+```
+		# Policy to reject a goal if another is in process
+		if len(self._cancel_goals) != 0:
+			rospy.logwarn("A goal already exists! Reject new goal")
+			result = CountUntilResult()
+			result.count = -1000
+			goal_handle.set_rejected(result)
+			return 
+```
+
+### Lecture 41 - Place goals in a queue and execute them one by one
+
+* we remove previous prolicy and make a copy of the server script
+* in on_goal we will add the goal to a queue
+* we will create a queue in constructor as a class atrtribute `self._goal_queue = []` as am array
+* in on_goal we do
+```
+	def on_goal(self, goal_handle):
+		rospy.loginfo("Received new goal")
+		rospy.loginfo(goal_handle.get_goal())
+
+		self._goal_queue.append(goal_handle)
+		self._cancel_goals[goal_handle.get_goal_id()] = False
+		return
+```
+* so just append in cancel dict and goal list the handle and return
+* we will run the goals in a queue one at time in a new method `run_queue`
+* we instantiate a thread worker in constructor for the run_queue method `w = threading.Thread(name="queue_worker",target=self.run_queue)` and start `w.start()`
+* the implementation of run_queue is 
+```
+	def run_queue(self):
+		rate = rospy.Rate(2.0)
+		while not rospy.is_shutdown():
+			rate.sleep()
+			if len(self._goal_queue) > 0:
+				self.process_goal(self._goal_queue.pop(0))
+```
+* in essense we check if there are goal_handles in queue and we proicess the first one (oldest) in a FIFO list style
+* we will send 2 goals from client one after the other to test if they are processed sequentialy
+* IT WORKS
