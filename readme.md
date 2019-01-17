@@ -1598,53 +1598,53 @@ self._ac.cancel_goal()
 
 * Client will try to keep track of the Server State implementing its own StateMachine
 * ActionClient Goal StateMachine:
-* WAITING_FOR_GOAL_ACK state:
+* WAITING_FOR_GOAL_ACK state (=0):
 	* Purpose:
 	* Entry Condition: (Client Triggered) <= Send Goal
 	* Exit Condition: {PENDING} (Server Triggered) => PENDING
 	* Exit Condition: {ACTIVE} (Server Triggered) => ACTIVE
 	* Exit Condition: Cancel Goal (Client Triggered) => WAITING_FOR_CANCEL_ACK
-* PENDING state:
+* PENDING state (=1):
 	* Purpose:
 	* Entry Condition: {PENDING} (Server Triggered) <= WAITING_FOR_CANCEL_ACK
 	* Exit Condition: {RECALLING} (Server Triggered) => RECALLING
 	* Exit Condition: {ACTIVE} (Server Triggered) => ACTIVE
 	* Exit Condition: {REJECTED} (Server Triggered) => WAITING_FOR_RESULT
 	* Exit Condition: Cancel Goal (Client Triggered) => WAITING_FOR_CANCEL_ACK
-* ACTIVE state:
+* ACTIVE state (=2):
 	* Purpose:
 	* Entry Condition: {ACTIVE} (Server Triggered) <= WAITING_FOR_GOAL_ACK
 	* Entry Condition: {ACTIVE} (Server Triggered) <= PENDING
 	* Exit Condition: {PREEMPTING} (Server Triggered) => PREEMPTING
 	* Exit Condition: {ABORTED|SUCCEEDED} (Server Triggered) => WAITING_FOR_RESULT
 	* Exit Condition: Cancel Goal (Client Triggered) => WAITING_FOR_CANCEL_ACK
-* RECALLING state:
+* RECALLING state (=5):
 	* Purpose:
 	* Entry Condition: {RECALLING} (Server Triggered) <= PENDING
 	* Entry Condition: {RECALLING} (Server Triggered) <= WAITING_FOR_CANCEL_ACK
 	* Exit Condition: {PREEMPTING} (Server Triggered) => PREEMPTING
 	* Exit Condition: {RECALLED|REJECTED} (Server Triggered) => WAITING_FOR_RESULT
-* PREEMPTING state:
+* PREEMPTING state (=6):
 	* Purpose:
 	* Entry Condition: {PREEMPTING} (Server Triggered) <= ACTIVE
 	* Entry Condition: {PREEMPTING} (Server Triggered) <= WAITING_FOR_CANCEL_ACK
 	* Entry Condition: {PREEMPTING} (Server Triggered) <= RECALLING
 	* Exit Condition: {PREEMPTED|ABORTED|SUCCEEDED} (Server Triggered) => WAITING_FOR_RESULT
-* WAITING_FOR_CANCEL_ACK state:
+* WAITING_FOR_CANCEL_ACK state (=4):
 	* Purpose:
 	* Entry Condition: Cancel Goal (Client Triggered) <= PENDING
 	* Entry Condition: Cancel Goal (Client Triggered) <= ACTIVE
 	* Entry Condition: Cancel Goal (Client Triggered) <= WAITING_FOR_GOAL_ACK
 	* Exit Condition: {RECALLING} (Server Triggered) => RECALLING
 	* Exit Condition: {PREEMPTING} (Server Triggered) => PREEMPTING
-* WAITING_FOR_RESULT state:
+* WAITING_FOR_RESULT state (=3):
 	* Purpose:
 	* Entry Condition: {REJECTED} (Server Triggered) <= PENDING
 	* Entry Condition: {RECALLED|REJECTED} (Server Triggered) <= RECALLING
 	* Entry Condition: {PREEMPTED|ABORTED|SUCCEEDED} (Server Triggered) <= PREEMPTING
 	* Entry Condition: (Server Triggered) <= ACTIVE
 	* Exit Condition: Receive Result Message (Server Triggered) => DONE
-* DONE state (Terminal State):
+* DONE state (Terminal State) (=7):
 	* Purpose:
 	* Entry Condition: Receive Result Message (Server Triggered) <= WAITING_FOR_RESULT
 * with {} we show the status change 'new status' as received from ActiveServer in the ActionStatus topic
@@ -1653,6 +1653,7 @@ self._ac.cancel_goal()
 * We can use ActionCLient with SimpleActionServer and vice versa
 * Goal ID is created by the client, before sending a goal
 * A client can cancel the goal from another client
+* LOST state is client only (id = 8)
 
 ### Lecture 35 - Documentation Links
 
@@ -1765,4 +1766,50 @@ self._ac.cancel_goal()
 				break
 ```
 * we need to cancel the flag
-* THATS ITs
+* THATS IT!
+
+### Lecture 38 - Create a Client with the ActionClient
+
+* we create 'activity_action_client.py' make it exec and add boiler plate code, cearwinf a boilerplate clase and in main we instantiate it and spin
+* we will use from actionlib ActionClient, ClientGoalHandle and CommState (the client goal state machine state)
+* in costructor 
+	* we create an instance of Actionlib as class attr `self._ac = actionlib.ActionClient("/count_until",CountUntilAction)`
+	* we wait the server to start
+* we create a send_goal method in class to send the goalto server
+	* the signature is `def send_goal(self, max_number, wait_duration):` 
+	* we make a CountUntilGoal instance and fill in the params
+	* we get a goal_handle when we actially sentd the goal to server and pass in 2 callbacks. one for feedback from server and one for server goal state transitions
+```
+	def send_goal(self, max_number, wait_duration):
+		goal = CountUntilGoal()
+		goal.max_number = max_number
+		goal.wait_duration = wait_duration
+		thing = self._ac.send_goal(goal,
+			self.on_transition,
+			self.on_feedback)
+```
+* we add the on_transition callback
+* we add the on_feedback callback
+* we ROSRUN but we dont see any feedback.
+* this happens because the goal_handle we get back from send_goal is local to the send_goal method.
+* when the method returns its gone so feedbackcallback is gone too
+* we avoid storing it in class . we prefer to return it from send goal and keep it in main 
+* now callbacks work. we see 3 transitions in log
+* we printout comm_state to see the state ids in transitions and goal_status
+```
+	def on_transition(self, goal_handle):
+		rospy.loginfo("--- Transition callback")
+		rospy.loginfo(goal_handle.get_comm_state())
+		rospy.loginfo(goal_handle.get_goal_status())
+```
+* goal status  goes from 1 to 2
+* comm state  2 - 6 - 3 -7
+* GOAL STATUS tracks the Server Goal Status
+* COMM STATE track the CLIENTs state machinbe
+* we can get Client goal (state machine) terminal state with `goal_handle.get_terminal_state()`
+* we can get get action resutl with `goal_handle.get_result()`
+* to cancel a goal we use `goal_handle.cancel()`
+
+### Lecture 39 - Send and Handle Multiple Goals
+
+* 
