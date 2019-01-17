@@ -1812,4 +1812,23 @@ self._ac.cancel_goal()
 
 ### Lecture 39 - Send and Handle Multiple Goals
 
-* 
+* we go to activity_action_server
+* we start a new thereat to process a goal. in the on_goal method. 
+* so the basic part to be able to hanlde multiple goals is there
+* we will start 2 goals from client
+```
+	goal_handle1 = client.send_goal(8, 0.5)
+	goal_handle2 = client.send_goal(5, 0.8)
+```
+* IT WORKS! but not completely
+* the on_cancel() in server wot work as when we get the request we dont know for whic h goal it is
+* currently it is unpredictable which will stop
+* we have to solve it 
+* we wont use the cancel request flag. we ll use a dictionary `self._cancel_goals = {}`
+* the key will be the goalid and the key the flag
+* in on_goal callback we ad dthe goal id in the dictionary `self._cancel_goals[goal_handle.get_goal_id()] = False` and se t flag False
+* in on_cancel callback we get the goal_id and set its flag to True `self._cancel_goals[goal_id] = True`
+* in process_goal we again get the goal-id and check the dictionary by this keuy for the flag to change state
+* we need to remove the goal_id from dictionary when goal is done `self._cancel_goals.pop(goal_id)`
+* in client if we run multiple goals there is no easy way to get the id like the server
+* we make our own ids by filling in a dictionary
