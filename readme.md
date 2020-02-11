@@ -289,7 +289,7 @@ xmlrpc reply from http://ros-vm:45621/	time=1.616955ms
 
 ### Lecture 19 - Experimenting on Nodes with Turtlesim
 
-* apart from writing our one nodes and packages we can resue a lot of existing ones.
+* apart from writing our one nodes and packages we can reuse a lot of existing ones.
 * a way to understand better nodes is to run and see the code of existing ones.
 * turtlesim package is a package made for learning ROS
 * we install it with `sudo apt-get install ros-melodic-turtlesim`
