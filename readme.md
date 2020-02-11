@@ -20,18 +20,18 @@
 
 ### Lecture 2 - What is ROS, When to use it, and Why?
 
-* ROS is a Robot Operating System. It is something between a middleware and a framework for building Robbotic Applications (Drones,Robotic Arms, Autonomous machines)
+* ROS is a Robot Operating System. It is something between a middleware and a framework for building Robotic Applications (Drones,Robotic Arms, Autonomous machines)
 * ROS goals:
 	* Provide a standard for robotic application
 	* Use on any robot
-* We need to master the basics and core functionalities and then the implement
+* We need to master the basics and core functionalities and then implement
 * Code is reusable.
 * In robotics many devs write low level code that already exists
 * ROS provides off the shelf core functionalities and basic components . we can focus on high level functionality and apps
 * When to use it? when the level of integration we want to achieve (Integrate more and more sensors, actuators and controllers) makes our life difficult using a custom code
 * ROS applications are scalable and powerful
 * ROS can be used when we want to rwrite robot software that needs a lot of communication between its subprograms, or if it has functionalities that go far beyond
-* It shones for complex applications and complex Robot apps
+* It shines for complex applications and complex Robot apps
 * ROS provides a way to separate the code in reusable blocks offering communication tools to easily communicate between all our subprograms
 * For example if we program a robotic arm we can:
 	* create a subprogram (node) for our camera
@@ -56,7 +56,7 @@
 
 ### Lecture 4 - Intro
 
-* we will install it on ubuntu 16.04 (so kinetic) we can makje a vm with ubuntu 18.04 to instal melodic
+* we will install it on ubuntu 16.04 (so kinetic). we can make a vm with ubuntu 18.04 to instal melodic
 
 ### Lecture 6 - Which ROS version to use?
 
@@ -74,11 +74,11 @@
 * we give max cpu cores (4)
 * in storage in IDE controller we select our iso file
 * ok and start
-* we install ubuntu => normal installation => in vm we erase dick and install
+* we install ubuntu => normal installation => in vm we erase disk and install
 * we open a terminal and upgrade packages `sudo apt-get update` and `sudo apt-get upgrade`
 * we run `sudo apt-get install virtualbox-guest-dkms` to fix resolution and restart
 * we run `sudo apt-get install virtualbox-guest-additions-iso` to fix sound and restart
-* we download a text editor. we get sublime
+* we download a text editor. we choose sublime
 
 ### Lecture 8 - Install ROS
 
@@ -104,8 +104,8 @@ source ~/.bashrc
 
 * to launch a new ros master we type in terminal `roscore`
 * we have a ros master running on our environment
-* ROS master is the centerpiece of the ROS application. it provides naming and registration services wo all ROS subprograms (nodes)
-* we always ahave to start the ROS master before we use any ROS functionality
+* ROS master is the centerpiece of the ROS application. it provides naming and registration services to all ROS subprograms (nodes)
+* we always have to start the ROS master before we use any ROS functionality
 * I can have only 1 ROS master running at the same time
 
 ## Section 3 - Run your First ROS Program
@@ -115,9 +115,9 @@ source ~/.bashrc
 * In this lecture we will see how to create a Catkin workspace
 * Catkin is the official build system for ROS. we use it to build a ROS app
 * we will create a new folder 'catkin_ws'. we cd into it and create a 'src' folder
-* then beign in the catkin_ws folder we run `catkin_make`
-* after build finishes we have a 'devel' and 'build' folders. 
-* also in src folder we have 'CMakeLists.txt' this file was created by catkin to init the workspace
+* then being in the catkin_ws folder we run `catkin_make`
+* after build finishes we have 'devel' and 'build' folders. 
+* also in src folder we have 'CMakeLists.txt'. this file was created by catkin to init the workspace
 * all our code will be in the src/  folder. anytime we want to build our code we go to catkin_ws folder (project root folder) and run `catkin_make`
 * last thing we have to do is to source the catkin workspace
 * in the devel/ folder we have 'setup.bash' file. being in the devel folder we `source setup.bash` 
@@ -129,34 +129,34 @@ source ~/.bashrc
 
 * to run code with ROS we have to create packages.
 * packages allow to separate our code into reusable blocks
-* the package is an independent unit (one package for camera, one package for hw control one ofr motion palnning in the env)
+* the package is an independent unit (one package for camera, one package for HW control one for motion planning in the env)
 * we will create a simple package
-* to create a package we go to srs/ in our workspace. in there we run `catkin_create_pkg <name> <dependencies>` e.g in our case `catkin_create_pkg my_robot_tutorials roscpp std_msgs` rocpp = ros c++ libs rospy = ros python lib, std_msgs = ????
-* now we have anew folder ins src/ named my_robot_tutorials/
+* to create a package we go to src/ in our workspace. in there we run `catkin_create_pkg <name> <dependencies>` e.g in our case `catkin_create_pkg my_robot_tutorials roscpp std_msgs` where rocpp = ros c++ libs rospy = ros python lib, std_msgs = ????
+* now we have a new folder in src/ named my_robot_tutorials/
 * this folder contains a src/ folder an include/ folder a package.xml and CMakeLists.txt
 * CMakeLists.txt has a lot of examples. also package.xml has the depndencies and configuration
 * if we now go to project parent dir catkin_ws/ and run `catkin_make` we see that the new package is built with catkin
 
 ### Lecture 14 - What is a Node?
 
-* A ROS Node os a process that performs computations
+* A ROS Node is a process that performs computations
 * Much like an executable program that runs in our robot application
 * Our App will contain many nodes grouped into packages
 * Nodes can communicate with each other
-* e.g In our Sample App the Camera Pkg will handle the camera as an independent unit, TO do its job it will contain: A Camera driver, an image Processing program etc. all these blocks are Nodes.
+* e.g In our Sample App the Camera Pkg will handle the camera as an independent unit, To do its job it will contain: A Camera driver, an image Processing program etc. all these blocks are Nodes.
 * Each node is launched separately
 * Nodes will communicate using ROS communication functionality
 * The decision on which package to put a node has to do with app architecture
 * In the sample apps Motion Planning Package we can expect to have a motion planning node (it will perform motion planning for any given robot). We can also have a Path Correction Node to correct Motion Planning using external factors.
-* What we have to think of is how to make two nodes from different packages communicate with each other. E.g the imaghe processing node will analyze the images and send the analysis to the path correction node to calculate correction. this node then will notify the motion planning node for the adjustments it has to make
-* In HW Control Pkg we will find nodes that control the HW of the robot (weels, robotic arm joints etc). These nodes can be: Main Control Loop Node, HW Drivers Node, State Publisher Node
-* E.g the position coming from teh motor encoders is sent back to the control loop ofr precise control and is published in the State Publisher Node
-* The Motion Planning Node will send computed trajectories to teh Main Control Loop to execute them
+* What we have to think of is how to make two nodes from different packages communicate with each other. E.g the image processing node will analyze the images and send the analysis to the path correction node to calculate correction. this node then will notify the motion planning node for the adjustments it has to make
+* In HW Control Pkg we will find nodes that control the HW of the robot (wheels, robotic arm joints etc). These nodes can be: Main Control Loop Node, HW Drivers Node, State Publisher Node
+* E.g the position coming from the motor encoders is sent back to the control loop of precise control and is published in the State Publisher Node
+* The Motion Planning Node will send computed trajectories to the Main Control Loop to execute them
 * State from State Publisher is sent to the Path Correction and the motion Planning Node
 * ROS Nodes (in a nutshell):
 	* Processes that perform Computations
 	* Combined into a graph
-	* Comminicate with each other through topics, services, parameter server
+	* Communicate with each other through topics, services, parameter server
 * ROS Nodes benefits:
 	* Reduce code complexity
 	* Fault tolerance (1 can crash, the others will run)
@@ -224,7 +224,7 @@ int main(int argc, char **argv) {
 * we save the file and go up to catkin workspace folder and run `catkin_make` to build the node into an executable
 * our executable is located into <catkin workspace>/devel/lib/<package name>/ `catkin_ws/devel/lib/my_robot_tutorials/node_cpp` as node_cpp (the name we speced)
 * with roscore running we run `./node_cpp` and run our node
-* we will now impleemnta a 10Hz loop to printout a log like in python
+* we will now implementa a 10Hz loop to printout a log like in python
 ```
 	ros::Rate rate(10);
 
@@ -264,7 +264,6 @@ Connections:
     * to: /rosout
     * direction: outbound
     * transport: TCPROS
-
 ```
 * we see the node published to /rosout node using the Log functionality
 * we see the services of the node
