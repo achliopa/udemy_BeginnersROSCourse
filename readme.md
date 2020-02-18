@@ -131,7 +131,7 @@ source ~/.bashrc
 * packages allow to separate our code into reusable blocks
 * the package is an independent unit (one package for camera, one package for HW control one for motion planning in the env)
 * we will create a simple package
-* to create a package we go to src/ in our workspace. in there we run `catkin_create_pkg <name> <dependencies>` e.g in our case `catkin_create_pkg my_robot_tutorials roscpp std_msgs` where rocpp = ros c++ libs rospy = ros python lib, std_msgs = ????
+* to create a package we go to src/ in our workspace. in there we run `catkin_create_pkg <name> <dependencies>` e.g in our case `catkin_create_pkg my_robot_tutorials rospy roscpp std_msgs` where rocpp = ros c++ libs rospy = ros python lib, std_msgs = ????
 * now we have a new folder in src/ named my_robot_tutorials/
 * this folder contains a src/ folder an include/ folder a package.xml and CMakeLists.txt
 * CMakeLists.txt has a lot of examples. also package.xml has the depndencies and configuration
